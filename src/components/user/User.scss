@@ -1,0 +1,16 @@
+form {
+    padding: 20px;
+    margin: 100px auto;
+    border: 1px solid black;
+    width: 55%
+}
+
+
+@media screen and (min-width: 1200px) {
+    form {
+        width: 30%;
+    }
+    .signin-footer {
+        height: 100px;
+    }
+}

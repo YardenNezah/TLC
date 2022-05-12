@@ -1,0 +1,315 @@
+$light-tan: #f7e0b2;
+$white-11: rgba(255, 255, 255, 0.8);
+$brown-grey: #979797;
+$beige: #f9f4ea;
+$main-color: #4f5d9d;
+$small-space: 0.93px;
+$medium-space: 1.33px;
+$large-space: 1.67px;
+$small-size: 10px;
+$medium-size: 30px;
+$large-size: 40px;
+$largest-size: 60px;
+
+@mixin letter-spacing($px) {
+  letter-spacing: $px;
+}
+
+.card-bg {
+  background: {
+    image: image-set(
+      url("../../../assets/people.jpeg") 1x,
+      url("../../../assets/people.jpeg") 2x
+    );
+    repeat: no-repeat;
+    size: cover;
+  }
+  height: 270px;
+}
+
+.data-section {
+  margin: 80px 0;
+}
+
+h3 {
+  @include letter-spacing($medium-space);
+  font: {
+    weight: bold;
+    size: 20px;
+  }
+}
+
+.data-container {
+  display: flex;
+  margin-bottom: $large-size;
+  z-index: 1;
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.sub-title {
+  font-size: 14px;
+  margin-top: 70px;
+}
+
+.slider-div {
+  padding: 5px 0 5px 15px;
+}
+
+.get-app-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 $largest-size 0;
+  z-index: 1;
+}
+
+
+.nav-container {
+  padding: $small-size;
+}
+
+.data-item {
+  background-color: $light-tan;
+  margin: 10px;
+  position: relative;
+  width: 259px;
+  height: 350px;
+  border: 1px solid $main-color;
+}
+
+
+.icons-container {
+  display: flex;
+  justify-content: space-around;
+  z-index: 1;
+  img {
+    display: block;
+  }
+}
+
+.association-img {
+  width: 259px;
+  height: 224px;
+}
+
+.association-name {
+  font-size: 25px;
+  @include letter-spacing($large-space);
+}
+
+.association-content {
+  height: 80px;
+}
+
+.association-title {
+  font-weight: bold;
+}
+
+.tlc-title {
+  padding: 0 45px;
+}
+
+.all-associations-desktop-btn {
+  display: none;
+  text-decoration: none;
+  color: black;
+  font-size: $medium-size;
+  font-weight: bold;
+  text-align: right;
+}
+
+.founder-img {
+  position: relative;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  margin: 10px;
+  h1 {
+    @include letter-spacing($small-space);
+    width: 275px;
+    padding: 12px;
+    margin: 10px;
+    background-color: $white-11;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    border-radius: 0 0 650px 650px;
+    color:black;
+  }
+}
+
+.founder-item {
+  background-color: $beige;
+  width: 155px;
+  height: 237px;
+  margin: 0 0 $largest-size 20px;
+}
+
+.founder-name {
+  bottom: 20px;
+  font-size: 20px;
+  position: relative;
+}
+
+.founder-description {
+  margin: 20px $large-size;
+  font-size: 13.5px;
+  @include letter-spacing($small-space);
+}
+
+.founder-page-description {
+  margin: 40px 100px;
+  font-size: 20px;
+  @include letter-spacing($small-space);
+}
+
+.founder-associations-container {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.founder-associations-item {
+  background-color: $beige;
+  height: 237.4px;
+  margin: $small-size;
+  .founder-association-img {
+   width: 153.6px;
+    height: 149px;
+  }
+}
+
+
+
+@media screen and (min-width: 500px) {
+  .founder-description {
+    padding: 0 100px;
+  }
+}
+
+.icons {
+  margin-top: 50px;
+}
+
+@media screen and (min-width: 650px) {
+  .founder-description {
+    padding: 0 150px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .tlc-title {
+    padding: 0 $medium-size;
+    font-size: 32px;
+  }
+  .card-bg {
+    height: 696px;
+  }
+  .sub-title {
+    font-size: $medium-size;
+    margin:40px 0 10px 0;
+  }
+  .icons-title {
+    font-size: $medium-size;
+    margin: $large-size 0 0 0;
+  }
+  .association-img {
+    height: 224px;
+  }
+  .association-title {
+    font-size: $medium-size;
+  }
+  .association-name,
+  .volunteering-title {
+    font-size: $large-size;
+  }
+  .icons-container {
+    justify-content: center;
+    padding-bottom: 20px;
+    margin: 5px 0;
+    div {
+      font-size: 25px;
+      margin: 20px;
+      .vegan-icon {
+        width: 67px;
+        height: 67px;
+      }
+      .spicy-icon {
+        width: 80px;
+        height: $largest-size;
+      }
+      .veg-icon {
+        width: $largest-size;
+        height: $largest-size;
+      }
+    }
+    div:nth-child(3) {
+      position: relative;
+      bottom: 6px;
+    }
+  }
+  .get-app-container {
+    justify-content: left;
+    margin-left: 195px;
+  }
+  .data-item {
+    background-color: $beige;
+    margin: 0;
+  }
+  .all-associations-desktop-btn {
+    display: block;
+    margin-right: 19%;
+  }
+  .slider-div {
+    margin: 50px 140px;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .tlc-title {
+    padding: 0 80px;
+    font-size: 35px;
+  }
+  .founder-description {
+    margin: 0 100px 0 $largest-size;
+    padding: $small-size;
+  }
+  .founder-page-description {
+    margin: 40px 150px;
+  }
+  .founder-name {
+    bottom: $medium-size;
+    font-size: 25px;
+  }
+  .all-associations-desktop-btn {
+    margin-right: 16%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .founder-description {
+    margin: 0 290px 0 50px;
+  }
+  .founder-container {
+    margin-left: 260px;
+  }
+  .founders-associations {
+    margin: 0 0 100px 240px;
+  }
+  .founder-left-title,
+  h3 {
+    font-size: $medium-size;
+  }
+  .tlc-title {
+    padding: 0 200px;
+  }
+  .get-app-container {
+    margin-left: 255px;
+  }
+  .all-associations-desktop-btn {
+    margin-right: 11.5%;
+  }
+}
