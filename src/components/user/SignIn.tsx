@@ -75,7 +75,7 @@ const SignIn = () => {
           minLength={2}
           maxLength={8}
         ></Input>
-        <SubmitButton onClick={(e:any) => handleSubmit(e)}/>
+        <SubmitButton onClick={(e:any) => handleSubmit(e)} value={"Submit"}/>
         <p>
           Don't have an account yet? <Link to="/signup">Sign Up</Link>
         </p>

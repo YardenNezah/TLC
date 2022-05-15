@@ -64,7 +64,7 @@ const VolunteeringPage = (props: { volunteering: string }) => {
         key={2}
       />
       <p>Confirmation SMS will be sent</p>
-      <SubmitButton onClick={(e: any) => {}} />
+      <SubmitButton onClick={(e: any) => {}} value={"Submit"}/>
     </div>
   );
 };

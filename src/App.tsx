@@ -13,7 +13,7 @@ import AssociationPage from "./components/pages/associationPage/AssociationPage"
  import FounderPage from "./components/pages/founderPage/FounderPage";
 import CartPage from "./components/pages/cartPage/CartPage";
 import AllVolunteeringPage from "./components/pages/allVolunteeringPage/AllVolunteeringPage";
-import VolunteeringPage from "./components/pages/volunteeringPage/VolunteeringPage";
+import CalendarPage from "./components/pages/calendarPage/CalendarPage";
 
 function App() {
   return (
@@ -56,6 +56,9 @@ function App() {
       </Route>  
       <Route path="/cart" exact>
         <CartPage />
+      </Route>
+      <Route path="/calendar" exact>
+        <CalendarPage />
       </Route>
     </BrowserRouter>
   );

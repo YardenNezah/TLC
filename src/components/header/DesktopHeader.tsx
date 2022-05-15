@@ -2,6 +2,7 @@ import NavLinkTemplate from "../layout/button/NavLinkTemplate";
 import { Link } from "react-router-dom";
 import Search from "../layout/search/Search";
 import logo from "../../assets/logo.jpeg";
+import calendar from "../../assets/calender-icon.jpeg";
 import user from "../../assets/user-icon-copy.png";
 import "./Header.scss";
 
@@ -25,8 +26,8 @@ const DesktopHeader = () => {
         <Link to="/signin">
           <img src={user} alt="user"></img>
         </Link>
-        <Link to="/cart">
-        <i className="bi bi-calendar-check"></i>
+        <Link to="/calendar">
+          <img src={calendar} alt="calendar" className="calendar"></img>
         </Link>
       </div>
     </nav>

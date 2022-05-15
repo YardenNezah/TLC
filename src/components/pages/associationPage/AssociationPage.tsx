@@ -10,6 +10,7 @@ import { useAppDispatch } from "../../../store/store";
 import { useEffect, Fragment, useState } from "react";
 import { fetchAssociations } from "../../../store/AssociationDataSlice";
 import { fetchVolunteering } from "../../../store/volunteeringDataSlice";
+import SubmitButton from "../../layout/button/SubmitButton";
 
 const AssociationPage = () => {
   const dispatch = useAppDispatch();
@@ -84,7 +85,8 @@ const AssociationPage = () => {
                 <h3>{volunteering.date}</h3>
               </div>
               <div><h3>{volunteering.address}</h3></div>
-              <button onClick={() => openVolunteeringCardHandler(volunteering.name)} key={volunteering._id}>Sign up here</button>
+              <SubmitButton value={"Sign up here"} onClick={() => openVolunteeringCardHandler(volunteering.name)}></SubmitButton>
+
             </div>
           ))}
         </div>

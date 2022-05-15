@@ -4,6 +4,7 @@ import { fetchVolunteering } from '../../../store/volunteeringDataSlice';
 import { fetchAssociations } from '../../../store/AssociationDataSlice';
 import { useAppDispatch } from '../../../store/store';
 import "./AllVolunteeringPage.scss"
+import SubmitButton from '../../layout/button/SubmitButton';
 const VolunteeringGrid = () => {
 
     const dispatch = useAppDispatch();
@@ -23,7 +24,7 @@ const VolunteeringGrid = () => {
                   <div><h1>{item.name}</h1></div>
                   <div><h3>{item.date}</h3></div>
                   <div><h3>{item.address}</h3></div>
-                  <button>Sign up here</button>
+                  <SubmitButton value={"Sign up here"} onClick={()=>{}}></SubmitButton>
               </div>
           ))}
         </div>
