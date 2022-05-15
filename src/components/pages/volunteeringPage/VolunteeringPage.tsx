@@ -28,43 +28,48 @@ const VolunteeringPage = (props: { volunteering: string }) => {
     );
   };
 
-
   return (
     <div className="volunteering">
       <div className="volunteering-details">
         <div className="data-content">
           <h3 className="volunteering-title">{props.volunteering}</h3>
           <br></br>
-          <h2>Date: {volunteeringDetails.date}</h2>
-          <h2>Address: {volunteeringDetails.address} </h2>
+          <p>
+            <span>Date:</span> {volunteeringDetails.date}
+          </p>
+          <p>
+            <span>Address:</span> {volunteeringDetails.address}{" "}
+          </p>
+          <span>{volunteeringDetails.description}</span>
         </div>
       </div>
-      <h1>Sounds Good?</h1>
-      <h2>Fill in your details here</h2>
-      {inputsContainer("Your Name")}
-      <Input
-        content={""}
-        type={"text"}
-        placeholder={""}
-        onChange={(e: any) => {}}
-        value={""}
-        minLength={1}
-        maxLength={10}
-        key={1}
-      />
-      {inputsContainer("Your Phone Number")}
-      <Input
-        content={""}
-        type={"text"}
-        placeholder={""}
-        onChange={(e: any) => {}}
-        value={""}
-        minLength={1}
-        maxLength={10}
-        key={2}
-      />
-      <p>Confirmation SMS will be sent</p>
-      <SubmitButton onClick={(e: any) => {}} value={"Submit"}/>
+      <div className="volunteering-form">
+        <h1>Sounds Good? Fill in your details here</h1>
+        {inputsContainer("Your Name")}
+        <Input
+          content={""}
+          type={"text"}
+          placeholder={""}
+          onChange={(e: any) => {}}
+          value={""}
+          minLength={1}
+          maxLength={10}
+          key={1}
+        />
+        {inputsContainer("Your Phone Number")}
+        <Input
+          content={""}
+          type={"text"}
+          placeholder={""}
+          onChange={(e: any) => {}}
+          value={""}
+          minLength={1}
+          maxLength={10}
+          key={2}
+        />
+        <p>Confirmation SMS will be sent</p>
+        <SubmitButton onClick={(e: any) => {}} value={"Submit"} />
+      </div>
     </div>
   );
 };

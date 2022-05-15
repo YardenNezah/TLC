@@ -19,19 +19,11 @@
   }
 }
 
+.association-page-container h2 {
+  padding: 0 160px;
+}
 .volunteering-page-description {
   padding: 0 50px;
-}
-
-.add-to-bag-btn {
-  height: 50px;
-  margin: 77px 89px 37px 78px;
-  padding: 0 50px;
-  border-radius: 2px;
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
 }
 
 .line {
@@ -39,22 +31,7 @@
   position: relative;
 }
 
-.quantity-container {
-  display: flex;
-  justify-content: space-around;
-  font-size: 40px;
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font: inherit;
-    margin: 0 10px;
-  }
-}
-
 .close-volunteering-page {
-  right: 15%;
-  position: relative;
   color: white;
   font-size: 30px;
   cursor: pointer;
@@ -78,6 +55,10 @@
   height: 25px;
 }
 
+.volunteering-form {
+  position: relative;
+  top: 50px;
+}
 @media screen and (min-width: 400px) {
   .wrapper-volunteering-page {
     margin-left: 27%;

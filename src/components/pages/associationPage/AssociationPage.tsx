@@ -1,9 +1,6 @@
-import clock from "../../../assets/clock-icon.svg";
-import VolunteeringSmallCard from "../../layout/card/VolunteeringSmallCard";
 import "./AssociationPage.scss";
 import VolunteeringPage from "../volunteeringPage/VolunteeringPage";
 import { useParams } from "react-router-dom";
-import Footer from "../../footer/Footer";
 import Header from "../../header/Header";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../store/store";
@@ -41,8 +38,6 @@ const AssociationPage = () => {
     (item: any) => item.association === params.associationName
   );
 
-  const filteredArr = associationVolunteering;
-
   return (
     <Fragment>
       <Header />
@@ -76,8 +71,8 @@ const AssociationPage = () => {
         <h2>{associationDetails[0].description}</h2>
 
         <div className="feed">
-          {filteredArr.map((volunteering: any) => (
-            <div className="feed-container">
+          {associationVolunteering.map((volunteering: any) => (
+            <div className="feed-container" key={volunteering.name}>
               <div>
                 <h1>{volunteering.name}</h1>
               </div>
@@ -86,12 +81,10 @@ const AssociationPage = () => {
               </div>
               <div><h3>{volunteering.address}</h3></div>
               <SubmitButton value={"Sign up here"} onClick={() => openVolunteeringCardHandler(volunteering.name)}></SubmitButton>
-
             </div>
           ))}
         </div>
-        <Footer />
-      </div>)}
+      </div>)}       
     </Fragment>
   );
 };

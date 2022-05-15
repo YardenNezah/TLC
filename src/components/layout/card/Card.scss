@@ -107,6 +107,13 @@ $small-space: 0.93px;
 
 .data-content {
   height: 240px;
+  p {
+    font-size: 30px;
+    span {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
 }
 
 .data-small-item {

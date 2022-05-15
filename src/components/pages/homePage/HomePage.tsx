@@ -38,7 +38,6 @@ const HomePage = () => {
             <h3>TLC</h3>
             Tender, Loving, Care
           </p>
-          {/* <Search /> */}
         </Card>
       </div>
       <MobileNav />
@@ -50,14 +49,13 @@ const HomePage = () => {
         </Link>
         <p className="sub-title">LAST MINUTE VOLUNTEERING:</p>
         <Volunteering volunteering={volunteering} key={volunteering._id}/>
-        <Link to={"/voluteerings"} className="all-associations-desktop-btn">
-          All Volunteerings {">>"}
+        <Link to={"/volunteering"} className="all-associations-desktop-btn">
+          All Volunteering {">>"}
         </Link>
       </div>
       <About />      
       <p className="sub-title">OUR FOUNDERS</p>
       <FounderItem founder={founders} key={founders._id}/>
-      <Footer />
     </Fragment>
   );
 };

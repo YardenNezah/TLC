@@ -4,9 +4,9 @@ import VolunteeringGrid from './VolunteeringGrid'
 
 const AllVolunteeringPage = () => {
   return (
-    <div className="all-founders-page">
+    <div className="page-container">
       <Header />
-      <h2>Founders</h2>  
+      <h2>Volunteering</h2>  
        <VolunteeringGrid /> 
       <Footer />
     </div>  )

@@ -4,7 +4,7 @@ import './Card.scss';
 const VolunteeringCard: React.FC<{
   title: string;
   address: string;
-  date: string;
+  date: Date;
   key: string; 
 }> = (props) => {
   return (

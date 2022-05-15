@@ -9,8 +9,7 @@ const CalendarPage = () => {
     <div className='calendar-page'>
         <Header />
         <h1>CALENDAR</h1>
-        <Calendar />
-        <Footer />
+        <Calendar className='calendar-header'/>
     </div>
   )
 }

@@ -9,9 +9,8 @@ import { Link } from "react-router-dom";
 const AllAssociations: React.FC = () => {
   const [filter, setFilter] = useState("all");
   return (
-    <div className="all-associations-page">
+    <div className="page-container">
       <Header />
-      <br /> <br />
       <h2>Associations</h2>
       <div className="categories-div">
         <Link to="/associations" onClick={() => setFilter("all")} className={`${filter === "all" ? 'all':'filterLink'}`}>All</Link>
@@ -21,7 +20,6 @@ const AllAssociations: React.FC = () => {
       </div>
       <br /> 
       <AssociationsGrid filter={filter} />
-      <hr />
       <Footer />
     </div>
   );

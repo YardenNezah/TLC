@@ -1,21 +1,11 @@
 .footer {
-  position: relative;
+  position: absolute;
   display: flex;
-  flex-direction: column;
+  bottom: 0;
+  margin-left: 35%;
   li {
     list-style: none;
-    font-size: 12px;
+    font-size: 19px;
     margin: 10px;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .footer {
-    flex-direction: row;
-    justify-content: center;
-    padding: 20px;
-    li {
-      font-size: 18px;
-    }
   }
 }

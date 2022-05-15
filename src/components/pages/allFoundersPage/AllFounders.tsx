@@ -4,7 +4,7 @@ import FoundersGrid from "./FoundersGrid";
 
 const AllFounders = () => {
   return (
-    <div className="all-founders-page">
+    <div className="page-container">
       <Header />
       <h2>Founders</h2>  
        <FoundersGrid /> 

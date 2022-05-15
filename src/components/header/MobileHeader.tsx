@@ -55,7 +55,6 @@ const MobileHeader = () => {
             <Link to="/founders" className="hamburger-nav-top-links">Associations</Link>
             <Link to="/volunteering" className="hamburger-nav-top-links">Feed</Link>
             <Link to="/associations" className="hamburger-nav-top-links">Founders</Link>
-            <hr />
           </div>           
           {content.map((navLi) => (
             <li className="hamburger-nav-list" key={navLi}>
