@@ -44,31 +44,9 @@ const VolunteeringPage = (props: { volunteering: string }) => {
         </div>
       </div>
       <div className="volunteering-form">
-        <h1>Sounds Good? Fill in your details here</h1>
-        {inputsContainer("Your Name")}
-        <Input
-          content={""}
-          type={"text"}
-          placeholder={""}
-          onChange={(e: any) => {}}
-          value={""}
-          minLength={1}
-          maxLength={10}
-          key={1}
-        />
-        {inputsContainer("Your Phone Number")}
-        <Input
-          content={""}
-          type={"text"}
-          placeholder={""}
-          onChange={(e: any) => {}}
-          value={""}
-          minLength={1}
-          maxLength={10}
-          key={2}
-        />
+        <h1>Sounds Good? Sign up here</h1>
         <p>Confirmation SMS will be sent</p>
-        <SubmitButton onClick={(e: any) => {}} value={"Submit"} />
+        <SubmitButton onClick={(e: any) => {}} value={"Sign up"} />
       </div>
     </div>
   );

@@ -7,10 +7,10 @@ const AllFounders = () => {
   return (
     <div className="page-container">
       <Header />
+      <div className="about-page"></div>
       <About />      
       <h2>Founders</h2>  
        <FoundersGrid /> 
-      <Footer />
     </div>
   );
 };
