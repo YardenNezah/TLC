@@ -17,8 +17,8 @@ const DesktopHeader = () => {
           TLC
         </Link>
         <NavLinkTemplate content={"Associations"} to={"/associations"} />
-        <NavLinkTemplate content={"Feed"} to={"/volunteering"} />
-        <NavLinkTemplate content={"Founders"} to={"/Founders"} />
+        <NavLinkTemplate content={"Volunteer now"} to={"/volunteering"} />
+        <NavLinkTemplate content={"About us"} to={"/Founders"} />
       </div>
 
       <div className="right-nav">

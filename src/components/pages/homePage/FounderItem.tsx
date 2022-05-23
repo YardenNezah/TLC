@@ -1,5 +1,7 @@
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
+import { Fragment } from "react";
+import Footer from "../../footer/Footer";
 
 const FounderItem = ({ founder }:any) => {
   return (
