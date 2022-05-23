@@ -30,7 +30,7 @@ function App() {
       <Route path="/volunteering" exact>
         <AllVolunteeringPage />
       </Route>
-      <Route path="/founders" exact>
+      <Route path="/About" exact>
         <AllFounders />
       </Route>
       <Route path="/PrivacyPolicy" exact>

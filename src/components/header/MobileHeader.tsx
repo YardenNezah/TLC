@@ -52,7 +52,7 @@ const MobileHeader = () => {
             <CloseButton onClick={() => setShowNavBar(false)}></CloseButton>
           )}
           <div className="hamburger-nav-top">
-            <Link to="/founders" className="hamburger-nav-top-links">Associations</Link>
+            <Link to="/About" className="hamburger-nav-top-links">Associations</Link>
             <Link to="/volunteering" className="hamburger-nav-top-links">Feed</Link>
             <Link to="/associations" className="hamburger-nav-top-links">Founders</Link>
           </div>           

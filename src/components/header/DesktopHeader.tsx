@@ -18,7 +18,7 @@ const DesktopHeader = () => {
         </Link>
         <NavLinkTemplate content={"Associations"} to={"/associations"} />
         <NavLinkTemplate content={"Volunteer now"} to={"/volunteering"} />
-        <NavLinkTemplate content={"About us"} to={"/Founders"} />
+        <NavLinkTemplate content={"About us"} to={"/About"} />
       </div>
 
       <div className="right-nav">
