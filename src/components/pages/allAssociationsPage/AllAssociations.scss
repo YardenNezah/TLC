@@ -9,16 +9,16 @@ $beige: #f9f4ea;
   margin: 15px 12px 25px 20px;
   display: flex;
   justify-content: space-between;
-  .filterLink {
+  button {
     font-size: 15px;
-    margin: 0 10px;
+    margin: 1px;
     text-decoration: none;
     list-style: none;
     letter-spacing: 1.92px;
     background: none;
     border: none;
     cursor: pointer;
-    color: black;
+    font-weight: 100 !important;
   }
 }
 
