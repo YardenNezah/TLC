@@ -64,6 +64,10 @@ $light-tan: #f7e0b2;
   }
 }
 
+.association-page-container h2 {
+  margin: 30px 100px;
+}
+
 .type-container:first-child {
   display: none;
 }
@@ -89,6 +93,7 @@ $light-tan: #f7e0b2;
   .association-page-img {
     width: 76%;
     height: 395px;
+    margin-top: 100px;
   }
   .associations-container {
     margin: 0 2px;

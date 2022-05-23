@@ -20,7 +20,6 @@ const AllAssociations: React.FC = () => {
       </div>
       <br /> 
       <AssociationsGrid filter={filter} />
-      <Footer />
     </div>
   );
 };
