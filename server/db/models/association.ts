@@ -60,6 +60,10 @@ const associationSchema = new mongoose.Schema({
     isNewAssociation: {
         type: Boolean,
         required: true,
+    },
+    siteLink: {
+        type: String,
+        required: true,
     }
 })
 

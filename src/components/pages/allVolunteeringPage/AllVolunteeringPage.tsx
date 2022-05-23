@@ -8,7 +8,6 @@ const AllVolunteeringPage = () => {
       <Header />
       <h2>Volunteering</h2>  
        <VolunteeringGrid /> 
-      <Footer />
     </div>  )
 }
 
