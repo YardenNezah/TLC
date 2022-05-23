@@ -5,6 +5,12 @@
 }
 
 .feed-container {
-    display: flex;
     border: 1px solid black;
+}
+
+@media screen and (min-width: 800px) {
+    .feed-container {
+        display: flex;
+        border: 1px solid black;
+    }    
 }

@@ -5,7 +5,6 @@ import GreyCard from "../../../layout/card/GreyCard";
 const About = () => {
   return (
     <GreyCard>
-        <p className="about-title">ABOUT US :</p>      
         <div className="about-container">
         <div className="about-description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a lacus

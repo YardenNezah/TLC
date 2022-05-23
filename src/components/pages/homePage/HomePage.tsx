@@ -53,6 +53,7 @@ const HomePage = () => {
           All Volunteering {">>"}
         </Link>
       </div>
+      <p className="about-title">ABOUT US :</p>      
       <About />      
       <p className="sub-title">OUR FOUNDERS</p>
       <FounderItem founder={founders} key={founders._id}/>
