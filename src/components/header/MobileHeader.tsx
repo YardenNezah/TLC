@@ -9,6 +9,7 @@ import { Fragment, useState } from "react";
 import NavLinkTemplate from "../layout/button/NavLinkTemplate";
 import { Link } from "react-router-dom";
 import CloseButton from "../layout/button/CloseButton";
+import calendar from "../../assets/calender-icon.jpeg";
 
 const MobileHeader = () => {
   const content: string[] = ["Sign In", "Contact Us", "Terms Of Use"];
@@ -37,9 +38,8 @@ const MobileHeader = () => {
                 <Link to="/signin">
                   <img src={user} alt="user"></img>
                 </Link>
-                <Link to="/cart">
-                  {/* <img src={bag} alt="bag"></img> */}
-                  Calandler
+                <Link to="/calendar">
+                  <img src={calendar} alt="calendar" className="calendar"></img>
                 </Link>
               </div>
             </>
@@ -52,10 +52,16 @@ const MobileHeader = () => {
             <CloseButton onClick={() => setShowNavBar(false)}></CloseButton>
           )}
           <div className="hamburger-nav-top">
-            <Link to="/About" className="hamburger-nav-top-links">Associations</Link>
-            <Link to="/volunteering" className="hamburger-nav-top-links">Feed</Link>
-            <Link to="/associations" className="hamburger-nav-top-links">Founders</Link>
-          </div>           
+            <Link to="/About" className="hamburger-nav-top-links">
+              Associations
+            </Link>
+            <Link to="/volunteering" className="hamburger-nav-top-links">
+              Feed
+            </Link>
+            <Link to="/associations" className="hamburger-nav-top-links">
+              Founders
+            </Link>
+          </div>
           {content.map((navLi) => (
             <li className="hamburger-nav-list" key={navLi}>
               <NavLinkTemplate content={navLi} to={navLi.replace(/\s/g, "")} />
