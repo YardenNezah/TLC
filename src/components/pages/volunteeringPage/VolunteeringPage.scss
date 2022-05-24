@@ -20,8 +20,9 @@
 }
 
 .association-page-container h2 {
-  padding: 0 160px;
+  padding: 0 10px;
 }
+
 .volunteering-page-description {
   padding: 0 50px;
 }
@@ -84,6 +85,9 @@
     z-index: -1;
     background-color: rgba(0, 0, 0, 0.75);
     display: grid;
+  }
+  .association-page-container h2 {
+    padding: 0 160px;
   }
   .volunteering {
     border: 1px solid black;

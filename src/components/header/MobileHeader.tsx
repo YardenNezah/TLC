@@ -3,7 +3,6 @@ import logo from "../../assets/group-10.png";
 import hamburger from "../../assets/group-13.png";
 import search from "../../assets/search-icon.png";
 import user from "../../assets/user-icon-copy.png";
-import bag from "../../assets/group-2-copy.png";
 import "./Header.scss";
 import { Fragment, useState } from "react";
 import NavLinkTemplate from "../layout/button/NavLinkTemplate";
