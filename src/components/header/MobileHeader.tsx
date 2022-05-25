@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/group-10.png";
+import logo from "../../assets/logo.jpeg";
 import hamburger from "../../assets/group-13.png";
 import search from "../../assets/search-icon.png";
 import user from "../../assets/user-icon-copy.png";
