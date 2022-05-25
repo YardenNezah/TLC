@@ -5,7 +5,6 @@ const Profile = () => {
     <div className="page-container">
       <Header />
       <form>
-        {" "}
         <h2>User Profile</h2>
         <h3>username:</h3>
         <h3>phone: </h3>

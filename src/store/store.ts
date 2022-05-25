@@ -6,7 +6,7 @@ import foundersSlice from "./founderDataSlice";
 import newAssociationsSlice from "./newAssociationsSlice";
 import popularAssociationsSlice from "./popularAssociationsSlice";
 import openAssociationsSlice from "./openAssociationsSlice";
-
+import usersSlice from "./usersSlice";
 
 const store = configureStore({
   reducer: {
@@ -15,7 +15,8 @@ const store = configureStore({
     volunteering: volunteeringSlice.reducer,
     newAssociations: newAssociationsSlice.reducer,
     popularAssociations: popularAssociationsSlice.reducer,
-    openAssociations: openAssociationsSlice.reducer
+    openAssociations: openAssociationsSlice.reducer,
+    users: usersSlice.reducer
   },
 });
 
