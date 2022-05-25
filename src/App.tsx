@@ -14,6 +14,7 @@ import AssociationPage from "./components/pages/associationPage/AssociationPage"
 import CartPage from "./components/pages/cartPage/CartPage";
 import AllVolunteeringPage from "./components/pages/allVolunteeringPage/AllVolunteeringPage";
 import CalendarPage from "./components/pages/calendarPage/CalendarPage";
+import Profile from "./components/user/Profile";
 
 function App() {
   return (
@@ -59,6 +60,9 @@ function App() {
       </Route>
       <Route path="/calendar" exact>
         <CalendarPage />
+      </Route>
+      <Route path="/profile" exact>
+        <Profile />
       </Route>
     </BrowserRouter>
   );

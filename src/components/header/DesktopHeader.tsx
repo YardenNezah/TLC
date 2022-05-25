@@ -23,6 +23,7 @@ const DesktopHeader = () => {
 
       <div className="right-nav">
         <Search />
+        <NavLinkTemplate content={"Profile"} to={"/profile"} />{" "}
         <Link to="/signin">
           <img src={user} alt="user"></img>
         </Link>
