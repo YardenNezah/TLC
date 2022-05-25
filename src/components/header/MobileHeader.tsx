@@ -59,7 +59,7 @@ const MobileHeader = () => {
               Volunteer now
             </Link>
             <Link to="/About" className="hamburger-nav-top-links">
-              Founders
+              About us
             </Link>
           </div>
           {content.map((navLi) => (

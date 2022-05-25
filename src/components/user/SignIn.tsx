@@ -13,7 +13,8 @@ const SignIn = () => {
   const [usernameInputs, setUsernameInputs] = useState()
   const [passwordInputs, setPasswordInputs] = useState()
 
-  const [feedback, setFeedback] = useState("")
+  const [feedback, setFeedback] = useState("");
+  const [loggedinUser, setLoggedinUser]= useState(null);
 
   const handleChangeUsername = (e: any) => {
     setUsernameInputs(e.target.value)
@@ -26,8 +27,9 @@ const SignIn = () => {
     try {
     const result = await axios.post("http://localhost:8080/auth/signin", {username: usernameInputs, password: passwordInputs})
     if(result.data.token) localStorage.setItem("token", result.data.token)
-    setFeedback("Logged in successfuly")
-    document.location.href = "http://localhost:3000/"
+    setLoggedinUser(result.config.data.substring(result.config.data.indexOf(':')+2, result.config.data.indexOf(',')-1));
+        setFeedback("Logged in successfuly"+ ', Welcome back ' + loggedinUser + '!')
+//document.location.href = "http://localhost:3000/"
     }
     catch(err: any) {
       setFeedback(err.response.data || "Network error. try again")
