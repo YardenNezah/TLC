@@ -4,7 +4,12 @@ const Profile = () => {
   return (
     <div className="page-container">
       <Header />
-      <h2>User Profile</h2>
+      <form>
+        {" "}
+        <h2>User Profile</h2>
+        <h3>username:</h3>
+        <h3>phone: </h3>
+      </form>
     </div>
   );
 };
