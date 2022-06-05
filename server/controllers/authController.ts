@@ -42,14 +42,14 @@ class authController {
   }
 
   async signup(req: Request, res: Response) {
-    let { username, password, firstName, lastName } = req.body;
+    let { username, password, name, role } = req.body;
 
     password = await bcrypt.hash(password, 10);
     const result = await usersHandler.createUserHandler({
       username,
       password,
-      firstName,
-      lastName,
+      name,
+      role
     });
     if (!result._id) return res.status(500).send("Internal error.");
     const tokenSecret: any = process.env.TOKEN_SECRET;
