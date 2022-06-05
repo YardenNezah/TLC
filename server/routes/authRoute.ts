@@ -19,3 +19,9 @@ authRouter.delete("/:id", authMiddleware, newAuthController.deleteUser);
 
 
 export default authRouter;
+
+1. delete initial data
+2. add roles - 1h
+3. frontend - auth system - 1h
+4. routes to UI 3h
+5. prefrences AI - 2h
