@@ -16,4 +16,4 @@ associationRouter.delete("/:id", associationController.deleteAssociation);
 
 associationRouter.patch("/", associationController.updateAssociation);
 
-export default associationRouter;
+export default associationRouter; 
