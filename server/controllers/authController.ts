@@ -20,6 +20,14 @@ class authController {
     return res.status(500).send("Internal error.");
   }
 
+  async getUsersByRole(req: Request, res: Response) {
+    const { role } = req.params;
+    if (!role) return res.status(400).send("no role.");
+    const result = await usersHandler.getUsersByRoleHandler(role);
+    if (result) return res.status(200).json({ result });
+    return res.status(500).send("Internal error.");
+  }
+
   async getUsers(req: Request, res: Response) {
     const result = await usersHandler.getUsersHandler();
     if (result) return res.status(200).json({ result });
@@ -42,14 +50,16 @@ class authController {
   }
 
   async signup(req: Request, res: Response) {
-    let { username, password, name, role } = req.body;
-
+    let { username, password, name, role, phone, associationDetails, keywords } = req.body;
+    const roleData = role === "association" ? {associationDetails} : {keywords}
     password = await bcrypt.hash(password, 10);
     const result = await usersHandler.createUserHandler({
+      ...roleData,
       username,
       password,
       name,
-      role
+      phone,
+      role,
     });
     if (!result._id) return res.status(500).send("Internal error.");
     const tokenSecret: any = process.env.TOKEN_SECRET;

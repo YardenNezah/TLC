@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const volunteeringSchema = new mongoose.Schema({
-    association: {
+    associationId: {
         type: String,
         required: true
     },
@@ -13,10 +13,6 @@ const volunteeringSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    volunteersQuantity: {
-        type: Number,
-        required: true
-    },
     description: {
         type: String,
         required: true
@@ -24,7 +20,19 @@ const volunteeringSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
-    }
+    },
+    keywords: [
+        {
+            type: String,
+            required: true
+        }
+    ],
+    volunteers: [
+        {
+            type: String,
+            required: false
+        }
+    ]
 })
 
 const volunteering = mongoose.model("volunteering", volunteeringSchema)

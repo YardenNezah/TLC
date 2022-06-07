@@ -1,7 +1,6 @@
 import authController from '../controllers/authController.js';
 import express from "express";
 import authMiddleware from '../middlewares/authMiddleware.js';
-import checkRole from '../middlewares/roleMiddleware.js';
 
 const authRouter = express.Router();
 
@@ -15,7 +14,9 @@ authRouter.get("/", newAuthController.getUsers);
 
 authRouter.get("/:id",authMiddleware, newAuthController.getUserById);
 
-authRouter.get("/:username",authMiddleware, newAuthController.getUserByUsername);
+authRouter.get("/getByUser/:username",authMiddleware, newAuthController.getUserByUsername);
+
+authRouter.get('/getByRole/:role', newAuthController.getUsersByRole)
 
 authRouter.delete("/:id", authMiddleware, newAuthController.deleteUser);
 
