@@ -35,6 +35,7 @@ const volunteeringSchema = new mongoose.Schema({
     ]
 })
 
+
 const volunteering = mongoose.model("volunteering", volunteeringSchema)
 
 export default volunteering;
