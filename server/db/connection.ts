@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import founder from "./models/founders.js";
 import volunteering from "./models/volunteering.js";
-import association from "./models/association.js";
 
 const connection = mongoose.connect(
   "mongodb+srv://tlc:tlc1234@cluster0.lrytr.mongodb.net/TLC?retryWrites=true&w=majority",

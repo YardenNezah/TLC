@@ -21,13 +21,9 @@ const associationSchema = {
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true
-    },
     isPopular: {
         type: Boolean,
-        required: true
+        default: false
     },
     openingHour: {
         type: String,
@@ -39,7 +35,7 @@ const associationSchema = {
     },
     isNewAssociation: {
         type: Boolean,
-        required: true
+        default: false
     },
     siteLink: {
         type: String,
@@ -56,6 +52,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: "user"
+    },
+    email: {
+        type: String,
+        required: true
     },
     username: {
         type: String,
