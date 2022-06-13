@@ -25,7 +25,7 @@ const dbInit = async () => {
         founderName: "Lian Nidam",
         founderDescription: "student",
         founderImage: "https://i.ibb.co/txk4m5r/Whats-App-Image-2022-06-12-at-22-28-56.jpg",
-        founderLinkedin: "https://www.linkedin.com/in/yarden-tsaraf",
+        founderLinkedin: "http://www.linkedin.com/in/lian-nidam",
         founderEmail: "liannidam04@gmail.com",
         founderAge: 24,
       },
