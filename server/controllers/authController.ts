@@ -5,9 +5,9 @@ import jwt from "jsonwebtoken";
 
 class authController {
   async getUserById(req: Request, res: Response) {
-    const { id } = req.body.user;
-    if (!id) return res.status(400).send("no id.");
-    const result = await usersHandler.getUserByIdHandler(id);
+    const { _id } = req.body.user;
+    if (!_id) return res.status(400).send("no id.");
+    const result = await usersHandler.getUserByIdHandler(_id);
     if (result) return res.status(200).json({ result });
     return res.status(500).send("Internal error.");
   }
@@ -46,11 +46,11 @@ class authController {
       return res.status(400).send("username or password is incorrect.");
     const token = jwt.sign(JSON.stringify({ id: result._id }), tokenSecret);
     if (!token) return res.status(500).send("Internal error.");
-    return res.status(200).json({ token });
+    return res.status(200).json({ token, role: result.role});
   }
 
   async signup(req: Request, res: Response) {
-    let { username, password, name, role, phone, associationDetails, keywords } = req.body;
+    let { username, password, name, role, email, phone, associationDetails, keywords } = req.body;
     const roleData = role === "association" ? {associationDetails} : {keywords}
     password = await bcrypt.hash(password, 10);
     const result = await usersHandler.createUserHandler({
@@ -59,13 +59,14 @@ class authController {
       password,
       name,
       phone,
+      email,
       role,
     });
     if (!result._id) return res.status(500).send("Internal error.");
     const tokenSecret: any = process.env.TOKEN_SECRET;
     const token = jwt.sign(JSON.stringify({ id: result._id }), tokenSecret);
     if (!token) return res.status(500).send("Internal error.");
-    return res.status(200).json({ token });
+    return res.status(200).json({ token, role });
   }
 
   async deleteUser(req: Request, res: Response) {

@@ -3,21 +3,27 @@ import { useSelector } from "react-redux";
 import "./AllAssociations.scss";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchAssociations } from "../../../store/AssociationDataSlice";
 import { fetchNewAssociations } from "../../../store/newAssociationsSlice";
 import { fetchPopularAssociations } from "../../../store/popularAssociationsSlice";
 import { fetchOpenAssociations } from "../../../store/openAssociationsSlice";
+import axios from "axios";
 
 const AssociationsGrid = ({ filter }: any) => {
-  const dispatch = useAppDispatch();
-  const { associations } = useSelector((state: any) => state.associations);
 
+  const [associations, setAssociations] = useState([])
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/auth/getByRole/association")
+      setAssociations(res.data.result)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
   useEffect(() => {
-    dispatch(fetchAssociations());
-    dispatch(fetchNewAssociations());
-    dispatch(fetchPopularAssociations());
-    dispatch(fetchOpenAssociations());
+    fetchData()
   }, []);
   const passFilter = (item: any) => {
     switch (filter) {
@@ -42,7 +48,7 @@ const AssociationsGrid = ({ filter }: any) => {
   };
   return (
     <div className="associations-grid">
-      {associations.map((item: any) => {
+      {associations && associations.map((item: any) => {
         if (passFilter(item))
           return (
             <Link
@@ -54,7 +60,7 @@ const AssociationsGrid = ({ filter }: any) => {
                 key={item.name}
                 title={item.name}
                 detail={""}
-                img={item.mobileImage}
+                img={item.associationDetails.image}
               ></BeigeCard>
             </Link>
           );

@@ -15,8 +15,14 @@ import CartPage from "./components/pages/cartPage/CartPage";
 import AllVolunteeringPage from "./components/pages/allVolunteeringPage/AllVolunteeringPage";
 import CalendarPage from "./components/pages/calendarPage/CalendarPage";
 import Profile from "./components/user/Profile";
+import NewVolunteering from "./components/pages/newVolunteering/newVolunteering";
+import { authMiddleware } from "./utils";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    authMiddleware(false, false, true)
+  }, [])
   return (
     <BrowserRouter>
       <Route path="/Home" exact>
@@ -63,6 +69,9 @@ function App() {
       </Route>
       <Route path="/profile" exact>
         <Profile />
+      </Route>
+      <Route path="/newVolunteering" exact>
+        <NewVolunteering/>
       </Route>
     </BrowserRouter>
   );

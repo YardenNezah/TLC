@@ -13,10 +13,11 @@ class volunteeringHandler {
 
   static async createVolunteeringHandler(data: any) {
     try {
-      const newVolunteering= new volunteering({ ...data });
+      const newVolunteering= new volunteering({ ...data, associationId: data.user._id});
       await newVolunteering.save();
       return true;
     } catch (err) {
+      console.log(err)
       return false;
     }
   }
@@ -37,6 +38,44 @@ class volunteeringHandler {
     } catch (err) {
       return false;
     }
+  }
+
+  static async volunteerHandler(data: any) {
+    
+    const {volunteeringId, user} = data
+    try {
+      const currentVolunteering = await volunteering.findById(volunteeringId)
+      await volunteering.findByIdAndUpdate(volunteeringId, {
+        volunteers: [...currentVolunteering.volunteers, user._id]
+      })
+      return true
+    }
+    catch(err) {
+      return false;
+    }
+  }
+
+  static async getMyVolunteeringsHandler(user: any) {
+    try {
+      console.log(user._id)
+    const res = volunteering.find({associationId: user._id})
+    if(res) return res
+    else return false
+    }
+    catch(err) {
+      return false
+    }
+  }
+
+  static async getRegisteredVolunteeringsHandler(user: any) {
+    try {
+      const res = volunteering.find({ favouriteFoods: { "$in" : [user._id]} })
+      if(res) return res
+      else return false
+      }
+      catch(err) {
+        return false
+      }
   }
 }
 

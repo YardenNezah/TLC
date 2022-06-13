@@ -27,7 +27,6 @@ const foundersSlice = createSlice({
       })
       .addCase(fetchFounders.rejected, (state, action) => {
         state.isLoading = false;
-        //console.log(action.error.message);
       });
   },
 });

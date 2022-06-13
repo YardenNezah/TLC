@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchAssociations = createAsyncThunk("associations/fetchAssociations", async () => {
-  const response = await axios.get("http://localhost:8080/associations");
-  return response.data;
+  const response = await axios.get("http://localhost:8080/auth/getByRole/association");
+  return response.data.result;
 });
 
 const associationsSlice = createSlice({

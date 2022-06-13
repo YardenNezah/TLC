@@ -27,7 +27,6 @@ const volunteeringSlice = createSlice({
       })
       .addCase(fetchVolunteering.rejected, (state, action) => {
         state.isLoading = false;
-        //console.log(action.error.message);
       });
   },
 });

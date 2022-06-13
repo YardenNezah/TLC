@@ -3,7 +3,8 @@ import user from "../models/user.js";
 class usersHandler {
   static async getUserByIdHandler(id: string) {
     const result = await user.findById(id);
-    return result;
+    if (result) return result;
+    else return false
   }
 
   static async getUserByUsernameHandler(username: string) {
@@ -27,6 +28,7 @@ class usersHandler {
       const result = await newUser.save();
       return result;
     } catch (err) {
+      console.log(err)
       return false;
     }
   }

@@ -8,11 +8,26 @@ import { useEffect, Fragment, useState } from "react";
 import { fetchAssociations } from "../../../store/AssociationDataSlice";
 import { fetchVolunteering } from "../../../store/volunteeringDataSlice";
 import SubmitButton from "../../layout/button/SubmitButton";
+import axios from "axios";
 
 const AssociationPage = () => {
   const dispatch = useAppDispatch();
-  const { associations } = useSelector((state: any) => state.associations);
-  const { volunteering } = useSelector((state: any) => state.volunteering);
+  const [associations, setAssociations] = useState([])
+  const [volunteering, setVolunteering] = useState([])
+  const fetchData = async () => {
+    try {
+      const aRes = await axios.get("http://localhost:8080/auth/getByRole/association")
+      const bRes = await axios.get("http://localhost:8080/volunteering")
+      setAssociations(aRes.data.result)
+      setVolunteering(bRes.data.result)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
+  useEffect(() => {
+    fetchData()
+  }, []);
 
   useEffect(() => {
     dispatch(fetchAssociations());
@@ -20,22 +35,22 @@ const AssociationPage = () => {
   }, []);
 
   const [openVolunteeringCard, setOpenVolunteeringCard] = useState(false);
-  const [volunteeringName, setVolunteeringName] = useState("");
+  const [selectedVolunteering, setSelectedVolunteering] = useState({});
   
-  const openVolunteeringCardHandler = (volunteer: string) => {
+  const openVolunteeringCardHandler = (volunteer: object) => {
     setOpenVolunteeringCard(true);
-    setVolunteeringName(volunteer);
+    setSelectedVolunteering(volunteer);
   };
 
 
 
   const params: any = useParams();
-  const associationDetails = associations.filter(
+  const associationDetails: any = associations.filter(
     (item: any) => item.name === params.associationName
   );
 
   const associationVolunteering = volunteering.filter(
-    (item: any) => item.association === params.associationName
+    (item: any) => item.associationId === associationDetails._id
   );
 
   return (
@@ -54,7 +69,7 @@ const AssociationPage = () => {
             X
           </button>
           <br />
-          <VolunteeringPage volunteering={volunteeringName}></VolunteeringPage>
+          <VolunteeringPage volunteering={selectedVolunteering}></VolunteeringPage>
         </Fragment>
       )}
 
@@ -62,13 +77,13 @@ const AssociationPage = () => {
       {!openVolunteeringCard && (
       <div className="association-page-container">
         <img
-          src={associationDetails[0].desktopImage}
+          src={associationDetails[0]?.associationDetails.image}
           alt="association"
           className="association-page-img"
-          srcSet={`${associationDetails[0].bigImage} 800w`}
+          srcSet={`${associationDetails[0]?.associationDetails.bigImage} 800w`}
         ></img>
         <h1>{params.associationName}</h1>
-        <h2>{associationDetails[0].description}</h2>
+        <h2>{associationDetails[0]?.associationDetails.description}</h2>
 
         <div className="feed">
           {associationVolunteering.map((volunteering: any) => (
@@ -80,7 +95,7 @@ const AssociationPage = () => {
                 <h3>{volunteering.date}</h3>
               </div>
               <div><h3>{volunteering.address}</h3></div>
-              <SubmitButton value={"Sign up here"} onClick={() => openVolunteeringCardHandler(volunteering.name)}></SubmitButton>
+              <SubmitButton value={"Sign up here"} onClick={() => openVolunteeringCardHandler(volunteering)}></SubmitButton>
             </div>
           ))}
         </div>

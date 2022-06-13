@@ -8,10 +8,10 @@ const PopularItem = ({ association }: any) => {
     >
       <div className="data-item popular-item">
         <img
-          src={association.mobileImage}
+          src={association.associationDetails.image}
           alt="img"
           className="association-img"
-          srcSet={`${association.desktopImage} 800w`}
+          srcSet={`${association.associationDetails.image} 800w`}
         ></img>
         <div className="association-content">
           <h2 className="association-name">{association.name}</h2>

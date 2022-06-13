@@ -12,7 +12,7 @@ authRouter.post("/signup", newAuthController.signup);
 
 authRouter.get("/", newAuthController.getUsers);
 
-authRouter.get("/:id",authMiddleware, newAuthController.getUserById);
+authRouter.get("/getByToken",authMiddleware, newAuthController.getUserById);
 
 authRouter.get("/getByUser/:username",authMiddleware, newAuthController.getUserByUsername);
 

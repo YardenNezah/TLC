@@ -6,6 +6,7 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import SubmitButton from "../layout/button/SubmitButton";
 import axios from "axios";
+import { authMiddleware } from "../../utils";
 
 
 const SignIn = () => {
@@ -14,7 +15,6 @@ const SignIn = () => {
   const [passwordInputs, setPasswordInputs] = useState()
 
   const [feedback, setFeedback] = useState("");
-  const [loggedinUser, setLoggedinUser]= useState(null);
 
   const handleChangeUsername = (e: any) => {
     setUsernameInputs(e.target.value)
@@ -26,32 +26,20 @@ const SignIn = () => {
     e.preventDefault()
     try {
     const result = await axios.post("http://localhost:8080/auth/signin", {username: usernameInputs, password: passwordInputs})
-    if(result.data.token) localStorage.setItem("token", result.data.token)
-    setLoggedinUser(result.config.data.substring(result.config.data.indexOf(':')+2, result.config.data.indexOf(',')-1));
-        setFeedback("Logged in successfuly"+ ', Welcome back ' + loggedinUser + '!')
-//document.location.href = "http://localhost:3000/"
+    if(result.data.token) {
+      localStorage.setItem("role", result.data.role)
+      localStorage.setItem("token", result.data.token)
+    }
+        setFeedback("Logged in successfully")
+        document.location.href = "http://localhost:3000/"
     }
     catch(err: any) {
       setFeedback(err.response.data || "Network error. try again")
     }
   }
 
-  const isLoggedIn = async () => {
-    const token: any = localStorage.getItem("token")
-    try {
-    const result = await axios.get("http://localhost:8080/auth/", {
-      headers: {
-        "auth-token": token
-      }
-    })
-    } catch(err) {
-    localStorage.removeItem("token")
-  }
-  }
-
   useEffect(() => {
-    const token = localStorage.getItem("token")
-    if(token) isLoggedIn()
+    authMiddleware(true, false, true)
   }, [])
 
   return (
@@ -66,7 +54,7 @@ const SignIn = () => {
           onChange={(e:any) => handleChangeUsername(e)}
           value={usernameInputs}
           minLength={2}
-          maxLength={8}
+          maxLength={32}
         ></Input>
         <Input
           content={"Password "}
@@ -75,7 +63,7 @@ const SignIn = () => {
           onChange={(e:any) => handleChangePassword(e)}
           value={passwordInputs}
           minLength={2}
-          maxLength={8}
+          maxLength={32}
         ></Input>
         <SubmitButton onClick={(e:any) => handleSubmit(e)} value={"Submit"}/>
         <p>

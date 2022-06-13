@@ -33,6 +33,24 @@ class volunteeringController {
     if (result) return res.status(200).send("Volunteering updated successfuly");
     return res.status(500).send("Internal error.");
   }
+
+  async volunteer(req: Request, res: Response) {
+    const result = await volunteeringHandler.volunteerHandler(req.body);
+    if (result) return res.status(200).send("Volunteering accepted.");
+    return res.status(500).send("Internal error.");
+  }
+
+  async getMyVolunteerings (req: Request, res: Response) {
+    const result = await volunteeringHandler.getMyVolunteeringsHandler(req.body.user);
+    if (result) return res.status(200).json({result});
+    return res.status(500).send("Internal error.");
+  }
+
+  async getRegisteredVolunteerings (req: Request, res: Response) {
+    const result = await volunteeringHandler.getRegisteredVolunteeringsHandler(req.body.user);
+    if (result) return res.status(200).json({result});
+    return res.status(500).send("Internal error.");
+  }
 }
 
 export default volunteeringController

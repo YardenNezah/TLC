@@ -6,7 +6,7 @@ import Footer from "../../footer/Footer";
 import Header from "../../header/Header";
 import PopularAssociation from "./PopularAssociation";
 import Volunteering from "./Volunteering";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import FounderItem from "./FounderItem";
 import { useEffect } from "react";
@@ -15,12 +15,25 @@ import { fetchVolunteering } from "../../../store/volunteeringDataSlice";
 import {fetchAssociations} from "../../../store/AssociationDataSlice";
 import { useSelector } from "react-redux";
 import { useAppDispatch} from "../../../store/store";
+import axios from "axios";
 
 const HomePage = () => {
   const dispatch= useAppDispatch();
-  const {associations}= useSelector((state:any)=> state.associations);
   const {volunteering}= useSelector((state:any)=> state.volunteering);
   const {founders}= useSelector((state:any)=> state.founders);
+  const [associations, setAssociations] = useState([])
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/auth/getByRole/association")
+      setAssociations(res.data.result)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
+  useEffect(() => {
+    fetchData()
+  }, []);
 
   useEffect(() => {
     dispatch(fetchAssociations()) 
@@ -43,12 +56,12 @@ const HomePage = () => {
       <MobileNav />
       <div className="data-section">
         <p className="sub-title">ASSOCIATIONS: </p>
-        <PopularAssociation data={associations} key={associations._id}/>
+        <PopularAssociation data={associations} key={0}/>
         <Link to={"/associations"} className="all-associations-desktop-btn">
           All Associations {">>"}
         </Link>
         <p className="sub-title">LAST MINUTE VOLUNTEERING:</p>
-        <Volunteering volunteering={volunteering} key={volunteering._id}/>
+        <Volunteering volunteering={volunteering} key={0}/>
         <Link to={"/volunteering"} className="all-associations-desktop-btn">
           All Volunteering {">>"}
         </Link>

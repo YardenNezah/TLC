@@ -7,6 +7,8 @@ import user from "../../assets/user-icon-copy.png";
 import "./Header.scss";
 
 const DesktopHeader = () => {
+
+  const token: any = localStorage.getItem("token")
   return (
     <nav className="desktop-top-nav">
       <div className="left-nav">
@@ -19,17 +21,18 @@ const DesktopHeader = () => {
         <NavLinkTemplate content={"Associations"} to={"/associations"} />
         <NavLinkTemplate content={"Volunteer now"} to={"/volunteering"} />
         <NavLinkTemplate content={"About us"} to={"/About"} />
+        {localStorage.getItem("role") === "association" && <NavLinkTemplate content={"New Volunteering"} to={"/newVolunteering"} />}
       </div>
 
       <div className="right-nav">
         <Search />
-        <NavLinkTemplate content={"Profile"} to={"/profile"} />{" "}
-        <Link to="/signin">
+        {token && <NavLinkTemplate content={"Profile"} to={"/profile"} />}
+        {!token && <Link to="/signin">
           <img src={user} alt="user"></img>
-        </Link>
-        <Link to="/calendar">
+        </Link>}
+        {token && <Link to="/calendar">
           <img src={calendar} alt="calendar" className="calendar"></img>
-        </Link>
+        </Link>}
       </div>
     </nav>
   );

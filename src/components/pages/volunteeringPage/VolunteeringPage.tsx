@@ -3,13 +3,16 @@ import Input from "../../layout/form/Input";
 import line from "../../../assets/line-7-copy-2.png";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SubmitButton from "../../layout/button/SubmitButton";
 import { fetchVolunteering } from "../../../store/volunteeringDataSlice";
+import axios from "axios";
 
-const VolunteeringPage = (props: { volunteering: string }) => {
+const VolunteeringPage = (props: { volunteering: object }) => {
   const dispatch = useAppDispatch();
   const { volunteering } = useSelector((state: any) => state.volunteering);
+
+  const [feedback, setFeedback] = useState("")
 
   useEffect(() => {
     dispatch(fetchVolunteering());
@@ -27,6 +30,22 @@ const VolunteeringPage = (props: { volunteering: string }) => {
       </div>
     );
   };
+  
+  const handleSignUp = async () => {
+    try {
+      const res = await axios.post("http://localhost:8080/volunteering/volunteer", {
+        volunteeringId: volunteeringDetails._id
+      }, {
+        headers: {
+          'auth-token': localStorage.getItem("token") || ""
+        }
+      })
+      setFeedback(res.data)
+    }
+    catch(err: any) {
+      setFeedback(err.response.data || "unknown error. please try again.")
+    }
+  }
 
   return (
     <div className="volunteering">
@@ -46,7 +65,8 @@ const VolunteeringPage = (props: { volunteering: string }) => {
       <div className="volunteering-form">
         <h1>Sounds Good? Sign up here</h1>
         <p>Confirmation SMS will be sent</p>
-        <SubmitButton onClick={(e: any) => {}} value={"Sign up"} />
+        <SubmitButton onClick={() => handleSignUp()} value={"Sign up"} />
+        <b>{feedback}</b>
       </div>
     </div>
   );
