@@ -12,9 +12,6 @@ const DesktopHeader = () => {
   return (
     <nav className="desktop-top-nav">
       <div className="left-nav">
-        <Link to="/">
-          <img src={logo} alt="logo" className="logo"></img>
-        </Link>
         <Link to="/" className="tlc">
           TLC
         </Link>
@@ -26,7 +23,7 @@ const DesktopHeader = () => {
 
       <div className="right-nav">
         <Search />
-        {token && <NavLinkTemplate content={"Profile"} to={"/profile"} />}
+        {token && <NavLinkTemplate content={"My Profile"} to={"/profile"} />}
         {!token && <Link to="/signin">
           <img src={user} alt="user"></img>
         </Link>}
