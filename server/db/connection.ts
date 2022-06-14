@@ -1,43 +1,11 @@
 import mongoose from "mongoose";
 import founder from "./models/founders.js";
-
-const dbInit = async () => {
-  const founderCount = await founder.countDocuments();
-  if (founderCount === 0) {
-    founder.insertMany([
-      {
-        founderName: "Yarden Tsaraf",
-        founderDescription: "student",
-        founderImage: "https://i.ibb.co/9rGVQDT/yarden.jpg",
-        founderLinkedin: "https://www.linkedin.com/in/yarden-tsaraf",
-        founderEmail: "yardentsaraf@gmail.com",
-        founderAge: 24,
-      },
-      {
-        founderName: "Raz Elkabets",
-        founderDescription: "student",
-        founderImage: "https://i.ibb.co/QdbysSB/raz.jpg",
-        founderLinkedin: "https://www.linkedin.com/in/yarden-tsaraf",
-        founderEmail: "razelkabets050@gmail.com",
-        founderAge: 25,
-      },
-      {
-        founderName: "Lian Nidam",
-        founderDescription: "student",
-        founderImage: "https://i.ibb.co/txk4m5r/Whats-App-Image-2022-06-12-at-22-28-56.jpg",
-        founderLinkedin: "http://www.linkedin.com/in/lian-nidam",
-        founderEmail: "liannidam04@gmail.com",
-        founderAge: 24,
-      },
-    ]);
-  }
-};
+import volunteering from "./models/volunteering.js";
 
 const connection = mongoose.connect(
   "mongodb+srv://tlc:tlc1234@cluster0.lrytr.mongodb.net/TLC?retryWrites=true&w=majority",
   () => {
     console.log("db connected successfuly.");
-    dbInit();
   }
 );
 

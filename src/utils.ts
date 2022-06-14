@@ -7,6 +7,7 @@ export const authMiddleware = async (hasTokenNavigate: boolean, hasNotTokenNavig
         {
           localStorage.removeItem("role")
           localStorage.removeItem("token")
+          localStorage.removeItem("keywords")
         }
         if(hasNotTokenNavigate) document.location.href = "http://localhost:3000/"
     }
@@ -19,6 +20,7 @@ export const authMiddleware = async (hasTokenNavigate: boolean, hasNotTokenNavig
       }
     })
     localStorage.setItem("role", res.data.result.role || null)
+    localStorage.setItem("keywords", res.data.result.keywords || "")
     if(res.data.result._id && hasTokenNavigate) document.location.href = "http://localhost:3000/"
     } catch(err) {
     noTokenHandler()

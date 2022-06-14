@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../store/store";
+import { fetchUsers } from "../../store/usersSlice";
 import { authMiddleware } from "../../utils";
 import Header from "../header/Header";
-import SubmitButton from "../layout/button/SubmitButton";
 
 const Profile = () => {
   
@@ -35,11 +37,11 @@ const Profile = () => {
     <div className="page-container">
       <Header />
       <form>
-        <h2>My Profile</h2>
+        <h2>User Profile</h2>
         <h3>username: {userDetails.username}</h3>
         <h3>name: {userDetails.name}</h3>
         <h3>phone: {userDetails.phone}</h3>
-        <SubmitButton onClick={() => {logout()}} value="Logout"></SubmitButton>
+        <button onClick={() => {logout()}}>Logout</button>
       </form>
     </div>
   );

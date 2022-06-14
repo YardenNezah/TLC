@@ -4,10 +4,19 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 class authController {
-  async getUserById(req: Request, res: Response) {
-    const { _id } = req.body.user;
+  async getUserByToken(req: Request, res: Response) {
+    const _id = req.body.user._id
     if (!_id) return res.status(400).send("no id.");
     const result = await usersHandler.getUserByIdHandler(_id);
+    if (result) return res.status(200).json({ result });
+    return res.status(500).send("Internal error.");
+  }
+
+  async getUserById(req: Request, res: Response) {
+    const _id = req.params.id
+    if (!_id) return res.status(400).send("no id.");
+    const result = await usersHandler.getUserByIdHandler(_id);
+    console.log(result)
     if (result) return res.status(200).json({ result });
     return res.status(500).send("Internal error.");
   }

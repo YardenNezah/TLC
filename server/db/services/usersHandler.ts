@@ -2,9 +2,12 @@ import user from "../models/user.js";
 
 class usersHandler {
   static async getUserByIdHandler(id: string) {
-    const result = await user.findById(id);
-    if (result) return result;
-    else return false
+    try {
+      const result = await user.findById(id);
+      console.log(result)
+      if (result) return result;
+    }
+    catch(err) { return false}
   }
 
   static async getUserByUsernameHandler(username: string) {

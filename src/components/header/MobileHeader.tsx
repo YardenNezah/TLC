@@ -29,9 +29,12 @@ const MobileHeader = () => {
               onClick={openNavBarHandler}
             ></img>
             <>
+              <Link to="/">
+                <img src={logo} alt="logo" className="logo"></img>
+              </Link>
               <div className="right-icons">
                 <img src={search} alt="search"></img>
-                <NavLinkTemplate content={"My Profile"} to={"/profile"} />{" "}
+                <NavLinkTemplate content={"Profile"} to={"/profile"} />{" "}
                 <Link to="/signin">
                   <img src={user} alt="user"></img>
                 </Link>

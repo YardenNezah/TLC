@@ -77,7 +77,7 @@ const SignUp = () => {
         <input type="text" name="phone" onChange={(e) => handleChange(e)} value={formInputs?.phone}/>
         <br/>
         {formInputs.role === "user" && <>
-        <label>Your Interests: </label>
+        <label>Keywords: </label>
         <input type="text" name="keywords" onChange={(e) => handleChange(e)}/>
         <br/>
         </>}
@@ -89,22 +89,22 @@ const SignUp = () => {
         <label>Image url: </label>
         <input type="text" name="image" onChange={(e) => handleAssociationChange(e)} value={formInputs?.image}/>
         <br/>
-        <label>Description: </label>
+        <label>description: </label>
         <input type="text" name="description" onChange={(e) => handleAssociationChange(e)} value={formInputs?.description}/>
         <br/>
-        <label>City: </label>
+        <label>city: </label>
         <input type="text" name="city" onChange={(e) => handleAssociationChange(e)} value={formInputs?.city}/>
         <br/>
-        <label>Street: </label>
+        <label>street: </label>
         <input type="text" name="street" onChange={(e) => handleAssociationChange(e)} value={formInputs?.street}/>
         <br/>
-        <label>Opening Hour: </label>
+        <label>openingHour: </label>
         <input type="text" name="openingHour" onChange={(e) => handleAssociationChange(e)} value={formInputs?.openingHour}/>
         <br/>
-        <label>Closing Hour: </label>
+        <label>closing Hour: </label>
         <input type="text" name="closingHour" onChange={(e) => handleAssociationChange(e)} value={formInputs?.closingHour}/>
         <br/>
-        <label>Site Link: </label>
+        <label>site link: </label>
         <input type="text" name="siteLink" onChange={(e) => handleAssociationChange(e)} value={formInputs?.siteLink}/>
         <br/>
         </>}

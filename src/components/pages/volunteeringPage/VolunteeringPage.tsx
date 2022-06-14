@@ -13,9 +13,20 @@ const VolunteeringPage = (props: { volunteering: object }) => {
   const { volunteering } = useSelector((state: any) => state.volunteering);
 
   const [feedback, setFeedback] = useState("")
+  const [selectedAssociation, setSelectedAssociation]: any = useState()
 
+  const fetchAssociation = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8080/auth/getById/${volunteeringDetails.associationId}`)
+      setSelectedAssociation(res.data.result)
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
   useEffect(() => {
     dispatch(fetchVolunteering());
+    fetchAssociation()
   }, []);
 
   const volunteeringDetails = volunteering.filter(
@@ -47,6 +58,15 @@ const VolunteeringPage = (props: { volunteering: object }) => {
     }
   }
 
+  function formatDate(Idate: any) {
+    const date = new Date(Idate)
+    const currentMonth = date.getMonth();
+    const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
+    const currentDate = date.getDate();
+    const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
+    return `${date.getFullYear()}-${monthString}-${currentDate}`;
+}
+
   return (
     <div className="volunteering">
       <div className="volunteering-details">
@@ -54,16 +74,23 @@ const VolunteeringPage = (props: { volunteering: object }) => {
           <h3 className="volunteering-title">{props.volunteering}</h3>
           <br></br>
           <p>
-            <span>Date:</span> {volunteeringDetails.date}
+            <span>Association:</span> {selectedAssociation?.name || "Deleted Association"}
+          </p>
+          <p>
+            <span>Date:</span> {formatDate(volunteeringDetails.date) !== "NaN-0NaN-NaN" ? formatDate(volunteeringDetails.date) : "Unknown Date"}
           </p>
           <p>
             <span>Address:</span> {volunteeringDetails.address}{" "}
+          </p>
+          <p>
+            <span>Keywords:</span> {volunteeringDetails.keywords}{" "}
           </p>
           <span>{volunteeringDetails.description}</span>
         </div>
       </div>
       <div className="volunteering-form">
         <h1>Sounds Good? Sign up here</h1>
+        <p>Confirmation SMS will be sent</p>
         <SubmitButton onClick={() => handleSignUp()} value={"Sign up"} />
         <b>{feedback}</b>
       </div>

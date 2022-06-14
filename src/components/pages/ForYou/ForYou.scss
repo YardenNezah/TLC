@@ -1,0 +1,18 @@
+.feed {
+    margin: 0 auto;
+    border: 1px solid black;
+    width: 70%;
+}
+
+.feed-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (min-width: 800px) {
+    .feed-container {
+        display: flex;
+        border: 1px solid black;
+    }    
+}
