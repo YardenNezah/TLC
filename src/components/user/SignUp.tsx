@@ -71,13 +71,14 @@ const SignUp = () => {
         <input type="text" name="username" onChange={(e) => handleChange(e)} value={formInputs?.username}/>
         <br/>
         <label>Password: </label>
-        <input type="text" name="password" onChange={(e) => handleChange(e)} value={formInputs?.password}/>
+        <input type="password" name="password" minLength={4} onChange={(e) => handleChange(e)} value={formInputs?.password}/>
         <br/>
         <label>Phone: </label>
         <input type="text" name="phone" onChange={(e) => handleChange(e)} value={formInputs?.phone}/>
         <br/>
         {formInputs.role === "user" && <>
-        <label>Keywords: </label>
+        <label>Which field interests you?</label> <br />
+        <span> (For example: soldiers, holocaust survivors, etc.) </span>
         <input type="text" name="keywords" onChange={(e) => handleChange(e)}/>
         <br/>
         </>}

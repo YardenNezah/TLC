@@ -13,12 +13,6 @@ const AllAssociations: React.FC = () => {
     <div className="page-container">
       <Header />
       <h2>Associations</h2>
-      <div className="categories-div">
-        <button onClick={() => setFilter("all")} className={`${filter === "all" ? 'all':'filterLink'}`}>All</button>
-        <button onClick={() => setFilter("new")} className={`${filter === "new" ? 'new':'filterLink'}`}>New</button>        
-        <button onClick={() => setFilter("popular")} className={`${filter === "popular" ? 'popular':'filterLink'}`}>Most Popular</button>
-      </div>
-      <br /> 
       <AssociationsGrid filter={filter} />
     </div>
   );

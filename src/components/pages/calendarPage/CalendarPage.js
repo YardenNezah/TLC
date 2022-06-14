@@ -1,18 +1,14 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
 import Calendar from "react-calendar";
-import 'react-calendar/dist/Calendar.css'
+import "react-calendar/dist/Calendar.css";
 import Footer from "../../footer/Footer";
 import Header from "../../header/Header";
 import "./CalendarPage.scss";
 
 const CalendarPage = () => {
   const [date, setDate] = useState(new Date());
-  const mark = [
-    '14-06-2022',
-    '23-06-2022',
-    '25-06-2022'
-]
+  const mark = ["14-06-2022", "23-06-2022", "25-06-2022"];
   const [myVolunteerings, setMyVolunteerings] = useState([]);
   const fetchData = async () => {
     const role = localStorage.getItem("role") || "user";
@@ -53,11 +49,11 @@ const CalendarPage = () => {
       <Header />
       <h1>CALENDAR</h1>
       <div className="calendar-container">
-        <div className="calendar-div">          <Calendar onChange={setDate} value={date}/>
-</div>
-        <div className="text-center">
-      Selected date: {date.toDateString()}
-   </div>
+        <div className="calendar-div">
+          {" "}
+          <Calendar onChange={setDate} value={date} />
+        </div>
+        <div className="text-center">Selected date: {date.toDateString()}</div>
         <div>
           {myVolunteerings &&
             myVolunteerings.map((item) => (
