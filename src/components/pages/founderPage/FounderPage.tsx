@@ -36,7 +36,6 @@ const FounderPage = () => {
           {founderDetails.founderLinkedin}
         </a>
       </div>
-      <Footer />
     </Fragment>
   );
 };
