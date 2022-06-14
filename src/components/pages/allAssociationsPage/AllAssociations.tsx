@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const AllAssociations: React.FC = () => {
   const [filter, setFilter] = useState("all");
+  console.log(filter)
   return (
     <div className="page-container">
       <Header />
@@ -16,7 +17,6 @@ const AllAssociations: React.FC = () => {
         <button onClick={() => setFilter("all")} className={`${filter === "all" ? 'all':'filterLink'}`}>All</button>
         <button onClick={() => setFilter("new")} className={`${filter === "new" ? 'new':'filterLink'}`}>New</button>        
         <button onClick={() => setFilter("popular")} className={`${filter === "popular" ? 'popular':'filterLink'}`}>Most Popular</button>
-        <button onClick={() => setFilter("open")} className={`${filter === "open" ? 'open':'filterLink'}`}>Open Now</button>
       </div>
       <br /> 
       <AssociationsGrid filter={filter} />

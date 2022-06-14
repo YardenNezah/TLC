@@ -2,7 +2,6 @@ import "./AssociationPage.scss";
 import VolunteeringPage from "../volunteeringPage/VolunteeringPage";
 import { useParams } from "react-router-dom";
 import Header from "../../header/Header";
-import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../store/store";
 import { useEffect, Fragment, useState } from "react";
 import { fetchAssociations } from "../../../store/AssociationDataSlice";
@@ -49,8 +48,9 @@ const AssociationPage = () => {
     (item: any) => item.name === params.associationName
   );
 
+
   const associationVolunteering = volunteering.filter(
-    (item: any) => item.associationId === associationDetails._id
+    (item: any) => item.associationId === associationDetails[0]._id
   );
 
   return (

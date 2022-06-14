@@ -20,12 +20,11 @@ const Volunteering = ({ volunteering }: any) => {
       <SlideArrow className={""} style={{ undefined }} onClick={undefined} />
     ),
   };
-  const smallerArr= volunteering.slice(0,3);
   return (
     <div className="slider-div">
       <Slider {...settings}>
-        {smallerArr &&
-          smallerArr.map((volunteering:any) => {
+        {volunteering &&
+          volunteering.map((volunteering:any) => {
             return <SignatureItem volunteering={volunteering} key={volunteering}/>;
           })}
       </Slider>

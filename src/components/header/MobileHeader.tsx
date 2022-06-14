@@ -34,7 +34,7 @@ const MobileHeader = () => {
               </Link>
               <div className="right-icons">
                 <img src={search} alt="search"></img>
-                <NavLinkTemplate content={"Profile"} to={"/profile"} />{" "}
+                <NavLinkTemplate content={"My Profile"} to={"/profile"} />{" "}
                 <Link to="/signin">
                   <img src={user} alt="user"></img>
                 </Link>

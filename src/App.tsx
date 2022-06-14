@@ -18,7 +18,6 @@ import Profile from "./components/user/Profile";
 import NewVolunteering from "./components/pages/newVolunteering/newVolunteering";
 import { authMiddleware } from "./utils";
 import { useEffect } from "react";
-import ForYou from "./components/pages/ForYou/ForYou";
 
 function App() {
   useEffect(() => {
@@ -37,9 +36,6 @@ function App() {
       </Route>
       <Route path="/volunteering" exact>
         <AllVolunteeringPage />
-      </Route>
-      <Route path="/forYou" exact>
-        <ForYou />
       </Route>
       <Route path="/About" exact>
         <AllFounders />

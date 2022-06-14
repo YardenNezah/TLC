@@ -1,1 +1,1 @@
-.feed{margin:0 auto;border:1px solid #000;width:60%}.feed-container{border:1px solid #000}@media screen and (min-width: 800px){.feed-container{display:flex;border:1px solid #000}}
+.feed{margin:50px auto;border:1px solid #000;width:70%}.feed-container{border:1px solid #000;display:flex;justify-content:space-evenly}.all,.today,.tommorrow,.foryou{color:rgba(232,196,122,.8);font-size:22px}@media screen and (min-width: 800px){.feed-container{display:flex;border:1px solid #000}}

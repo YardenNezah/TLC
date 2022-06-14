@@ -34,6 +34,9 @@ $medium-size: 30px;
   .right-nav img {
     margin: 5px $small-size;
   }
+  .right-nav {
+    display: flex;
+  }
   .left-nav {
     display: flex;
   }

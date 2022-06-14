@@ -30,10 +30,10 @@ const AssociationsGrid = ({ filter }: any) => {
       case "all":
         return true;
       case "new":
-        if (item.isNewAssociation) return true;
+        if (item.associationDetails.isNewAssociation) return true;
         else return false;
       case "popular":
-        if (item.isPopular) return true;
+        if (item.associationDetails.isPopular) return true;
         else return false;
       case "open":
         const opening = item.openingHour.split(":")[0] * 1;

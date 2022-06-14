@@ -90,7 +90,6 @@ const VolunteeringPage = (props: { volunteering: object }) => {
       </div>
       <div className="volunteering-form">
         <h1>Sounds Good? Sign up here</h1>
-        <p>Confirmation SMS will be sent</p>
         <SubmitButton onClick={() => handleSignUp()} value={"Sign up"} />
         <b>{feedback}</b>
       </div>
