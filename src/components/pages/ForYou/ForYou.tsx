@@ -12,9 +12,7 @@ const ForYou = () => {
       <h2>For you</h2>
       <b>based on your keywords</b>
       <div className="categories-div">
-        <button onClick={() => setFilter("all")} className={`${filter === "all" ? 'all':'filterLink'}`}>All</button>
-        <button onClick={() => setFilter("today")} className={`${filter === "today" ? 'today':'filterLink'}`}>Today</button>        
-        <button onClick={() => setFilter("tommorrow")} className={`${filter === "tommorrow" ? 'tommorrow':'filterLink'}`}>Tommorrow</button>
+        <button onClick={() => setFilter("keywords")} className={`${filter === "keywords" ? 'keywords':'filterLink'}`}>Keywords</button>
       </div>
       <br /> 
        <VolunteeringGrid filter={filter} /> 

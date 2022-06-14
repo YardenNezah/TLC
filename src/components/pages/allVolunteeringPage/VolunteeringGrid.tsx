@@ -24,26 +24,34 @@ const VolunteeringGrid = ({ filter }: any) => {
     setSelectedVolunteering(volunteer);
   };
 
-  // const passFilter = (item: any) => {
-  //   const volunteeringDay = item.date.slice(0, 9);
-  //   const date = new Date();
-  //   const month = date.getMonth() + 1;
-  //   const nextDay = date.getDate() + 1;
-  //   const today = date.getFullYear() + "-" + month + "-" + date.getDate();
-  //   const tommorrow = date.getFullYear() + "-" + month + "-" + nextDay;
-  //   switch (filter) {
-  //     case "all":
-  //       return true;
-  //     case "today":
-  //       if (today === volunteeringDay) return true;
-  //       else return false;
-  //     case "tommorrow":
-  //       if (tommorrow === volunteeringDay) return true;
-  //       else return false;
-  //     default:
-  //       return true;
-  //   }
-  // };
+  const passFilter = (item: any) => {
+    const k= volunteering.filter((item: any)=> {
+      const keywords: any = localStorage.getItem('keywords')
+      const found = item?.keywords[0]?.split(',').some((r: any)=> keywords.split(',').indexOf(r) >= 0)
+      return found;
+    })
+    const volunteeringDay = item.date.slice(0, 10);
+    const date = new Date();
+    const month = String(date.getMonth() + 1).padStart(2, '0');;
+    const nextDay = date.getDate() + 1;
+    const today = date.getFullYear() + "-" + month + "-" + date.getDate();
+    const tommorrow = date.getFullYear() + "-" + month + "-" + nextDay;
+    switch (filter) {
+      case "all":
+        return true;
+      case "today":
+        if (today === volunteeringDay) return true;
+        else return false;
+      case "tommorrow":
+        if (tommorrow === volunteeringDay) return true;
+        else return false;
+      case "foryou":
+        if (item.keywords === k[0].keywords) return true;
+        else return false;
+      default:
+        return true;
+    }
+  };
 
   function formatDate(Idate: any) {
     const date = new Date(Idate)
@@ -75,6 +83,7 @@ const VolunteeringGrid = ({ filter }: any) => {
       <div className="feed">
         {!openVolunteeringCard &&
           volunteering.map((item: any) => {
+            if (passFilter(item))
               return (
                 <div className="feed-container" key={item.name}>
                   <div>
