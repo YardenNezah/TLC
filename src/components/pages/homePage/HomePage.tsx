@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Card from "../../layout/card/Card";
 import "./HomePage.scss";
 import MobileNav from "./mobile-nav/MobileNav";
 import About from "./about/About";
-import Footer from "../../footer/Footer";
 import Header from "../../header/Header";
 import PopularAssociation from "./PopularAssociation";
 import Volunteering from "./Volunteering";
@@ -68,7 +68,7 @@ const HomePage = () => {
       </div>
       <p className="about-title">ABOUT US :</p>      
       <About />      
-      <p className="sub-title">OUR FOUNDERS</p>
+      <p className="sub-title">OUR FOUNDERS :</p>
       <FounderItem founder={founders} key={founders._id}/>
     </Fragment>
   );

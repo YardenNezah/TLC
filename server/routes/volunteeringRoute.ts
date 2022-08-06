@@ -4,7 +4,7 @@ import auth from "../middlewares/authMiddleware.js";
 import checkRole from "../middlewares/roleMiddleware.js";
 const volunteeringRouter = express.Router();
 
-const volunteerController= new volunteeringController;
+const volunteerController= new volunteeringController();
 
 volunteeringRouter.get("/", volunteerController.getVolunteering);
 

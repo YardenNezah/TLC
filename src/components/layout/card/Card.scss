@@ -26,7 +26,7 @@ $small-space: 0.93px;
 
 .grey-card {
   width: 100%;
-  background-color: $light-grey;
+  background-color: #f8f6e7;
   padding: 5px 0;
   img {
     display: block;
@@ -45,11 +45,6 @@ $small-space: 0.93px;
     height: 122px;
   }
 }
-
-.data-item {
-  position: relative;
-}
-
 
 .volunteering-img {
   width: 259px;
@@ -106,13 +101,37 @@ $small-space: 0.93px;
 }
 
 .data-content {
-  height: 240px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
   p {
+    font-size: 18px;
+  }
+  .volunteering-card-title {
     font-size: 30px;
-    span {
-      text-decoration: underline;
-      font-weight: bold;
-    }
+    font-weight: bold;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 300px;
+    transform: translateX(-50%);
+  }
+  .volunteer-card-address {
+    font-size: 25px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    color: black;
+    transform: translateX(-50%);
+  }
+  .volunteer-card-date {
+    font-size: 25px;
+    position: absolute;
+    color: black;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -122,7 +141,7 @@ $small-space: 0.93px;
   font-size: 14px;
   width: 157px;
   height: 300px;
-  .volunteering-small-img{
+  .volunteering-small-img {
     width: 157px;
     height: 100px;
   }
@@ -141,10 +160,10 @@ $small-space: 0.93px;
   }
   .outter-span {
     font-size: 14px;
-    }
-    .outter {
-      width: $medium-size;
-    }
+  }
+  .outter {
+    width: $medium-size;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -157,7 +176,7 @@ $small-space: 0.93px;
     font-size: 22px;
     width: 235px;
     height: 360px;
-    .volunteering-small-img{
+    .volunteering-small-img {
       width: 235px;
       height: 150px;
     }
@@ -171,25 +190,22 @@ $small-space: 0.93px;
   }
   .data-item {
     width: 360px;
-    .volunteering-img, 
+    .volunteering-img,
     .association-img {
       width: 360px;
     }
-  }
-  .data-item:first-child {
-    height: 357px;
   }
   .volunteering-title {
     font-size: 38px;
     padding: 0 10px;
   }
   .beige-card {
-    width: 290px;
+    width: 270px;
     height: 300px;
     margin: 50px 40px;
     border: 1px solid black;
     img {
-      width: 290px;
+      width: 270px;
       height: 212px;
     }
     h3 {
@@ -202,7 +218,7 @@ $small-space: 0.93px;
   }
   .volunteering-description {
     padding: 0 25px;
-    top: 55%;    
+    top: 55%;
     font-size: 24px;
   }
   .wrapper {

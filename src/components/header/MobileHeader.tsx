@@ -28,21 +28,14 @@ const MobileHeader = () => {
               className="hamburger"
               onClick={openNavBarHandler}
             ></img>
-            <>
-              <Link to="/">
-                <img src={logo} alt="logo" className="logo"></img>
-              </Link>
-              <div className="right-icons">
-                <img src={search} alt="search"></img>
-                <NavLinkTemplate content={"My Profile"} to={"/profile"} />{" "}
-                <Link to="/signin">
-                  <img src={user} alt="user"></img>
-                </Link>
-                <Link to="/calendar">
-                  <img src={calendar} alt="calendar" className="calendar"></img>
-                </Link>
-              </div>
-            </>
+            <img src={search} alt="search" className="search-icon"></img>
+            <NavLinkTemplate content={"My Profile"} to={"/profile"} />
+            <Link to="/signin">
+              <img src={user} alt="user"></img>
+            </Link>
+            <Link to="/calendar">
+              <img src={calendar} alt="calendar" className="calendar"></img>
+            </Link>
           </>
         )}
       </nav>

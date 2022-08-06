@@ -1,8 +1,8 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
-import React, { Fragment, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import Footer from "../../footer/Footer";
 import Header from "../../header/Header";
 import "./CalendarPage.scss";
 
@@ -10,6 +10,7 @@ const CalendarPage = () => {
   const [date, setDate] = useState(new Date());
   const mark = ["14-06-2022", "23-06-2022", "25-06-2022"];
   const [myVolunteerings, setMyVolunteerings] = useState([]);
+  console.log(myVolunteerings)
   const fetchData = async () => {
     const role = localStorage.getItem("role") || "user";
     const url =
@@ -38,7 +39,7 @@ const CalendarPage = () => {
     const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
     const currentDate = date.getDate();
     const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
-    return `${date.getFullYear()}-${monthString}-${currentDate}`;
+    return `${currentDate}/${monthString}/${date.getFullYear()}`;
   }
 
   useEffect(() => {
@@ -53,23 +54,26 @@ const CalendarPage = () => {
           {" "}
           <Calendar onChange={setDate} value={date} />
         </div>
+        <br />
         <div className="text-center">Selected date: {date.toDateString()}</div>
-        <div>
-          {myVolunteerings &&
-            myVolunteerings.map((item) => (
-              <div className="feed-container" key={item.name}>
-                <h1>
-                  <b>Name: </b>
-                  {item.name} | <b>Date: </b>{" "}
-                  {formatDate(item.date) !== "NaN-0NaN-NaN"
+        <br ></br>
+        <div className="feed">
+        {myVolunteerings &&
+          myVolunteerings.map((item, index) => (
+                <div className="calendar-feed-container" key={index}>
+                  <span className="calendar-volunteering-name">{item.name} </span>
+                  <span className="calendar-volunteering-date">
+                   {formatDate(item.date) !== "NaN-0NaN-NaN"
                     ? formatDate(item.date)
-                    : "Unknown Date"}{" "}
-                  | <b>Address: </b>
-                  {item.address}
-                </h1>
-              </div>
-            ))}
-        </div>
+                    : "Unknown Date"}
+                  </span>
+                  <span className="calendar-address">
+                  {item.address}</span>
+                </div>
+              )
+        )}
+      </div>
+    
       </div>
     </div>
   );

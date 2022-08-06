@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchVolunteering } from "../../../store/volunteeringDataSlice";
@@ -24,23 +26,25 @@ const VolunteeringGrid = ({ filter }: any) => {
     setSelectedVolunteering(volunteer);
   };
 
-  const passFilter = (item: any) => {
-    const foryouSuggestions = volunteering.filter((item: any) => {
+  const passFilter:any = (item: any) => {
+    const foryouSuggestions: any = volunteering?.filter((item: any) => {
       const keywords: any = localStorage.getItem("keywords");
-      const found = item?.keywords[0]
-        ?.split(",")
-        .some((r: any) => keywords.split(",").indexOf(r) >= 0);
-      return found;
-    })[0].keywords;
-    const volunteeringDay = item.date.slice(0, 10);
+      const found: any =
+        item?.keywords[0]?.length !== 0 ? item.keywords[0]?.split(",") : "";
+      const foundResult = found?.some(
+        (r: any) => keywords?.split(",").indexOf(r) >= 0
+      );
+      return foundResult;
+    })[0]?.keywords;
+    const volunteeringDay: any = item?.date?.slice(0, 10);
     const date = new Date();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const nextDay = date.getDate() + 1;
-    const today = date.getFullYear() + "-" + month + "-" + date.getDate();
-    const tommorrow = date.getFullYear() + "-" + month + "-" + nextDay;
+    const today = date.getFullYear() + "/" + month + "/" + date.getDate();
+    const tommorrow = date.getFullYear() + "/" + month + "/" + nextDay;
     let keywordIsEqual: boolean;
-    const isForYou = foryouSuggestions.map((suggestion: any) => {
-      item.keywords.map((keyword: any) => {
+    const isForYou:any = foryouSuggestions?.map((suggestion: any) => {
+      item?.keywords?.map((keyword: any) => {
         if (suggestion === keyword) keywordIsEqual = true;
         else keywordIsEqual = false;
       });
@@ -57,7 +61,7 @@ const VolunteeringGrid = ({ filter }: any) => {
         if (tommorrow === volunteeringDay) return true;
         else return false;
       case "foryou":
-        if (isForYou[0]) return true;
+        if (isForYou) return true;
         return false;
       default:
         return true;
@@ -69,8 +73,8 @@ const VolunteeringGrid = ({ filter }: any) => {
     const currentMonth = date.getMonth();
     const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
     const currentDate = date.getDate();
-    const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
-    return `${date.getFullYear()}-${monthString}-${currentDate}`;
+    //const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
+    return `${currentDate}/${monthString}/${date.getFullYear()}`;
   }
 
   return (
@@ -95,27 +99,24 @@ const VolunteeringGrid = ({ filter }: any) => {
       )}
       <div className="feed">
         {!openVolunteeringCard &&
-          volunteering.map((item: any) => {
+          volunteering.map((item: any, index: any) => {
             if (passFilter(item))
               return (
-                <div className="feed-container" key={item.name}>
-                  <div>
-                    <h1>{item.name}</h1>
+                <div className="feed-container" key={index}>
+                  <span className="volunteering-name">{item.name}</span>
+                  <span className="volunteering-date">
+                    {formatDate(item.date) !== "NaN/0NaN/NaN"
+                      ? formatDate(item.date)
+                      : "Unknown Date"}
+                  </span>
+
+                  <span className="address">{item.address}</span>
+                  <div className="submit-volunteer-button">
+                    <SubmitButton
+                      value={"Sign up here"}
+                      onClick={() => openVolunteeringCardHandler(item.name)}
+                    ></SubmitButton>
                   </div>
-                  <div>
-                    <h3>
-                      {formatDate(item.date) !== "NaN-0NaN-NaN"
-                        ? formatDate(item.date)
-                        : "Unknown Date"}
-                    </h3>
-                  </div>
-                  <div>
-                    <h3>{item.address}</h3>
-                  </div>
-                  <SubmitButton
-                    value={"Sign up here"}
-                    onClick={() => openVolunteeringCardHandler(item.name)}
-                  ></SubmitButton>
                 </div>
               );
           })}

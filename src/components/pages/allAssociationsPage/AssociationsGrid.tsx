@@ -1,13 +1,8 @@
+/* eslint-disable array-callback-return */
 import BeigeCard from "../../layout/card/BeigeCard";
-import { useSelector } from "react-redux";
 import "./AllAssociations.scss";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "../../../store/store";
 import { useEffect, useState } from "react";
-import { fetchAssociations } from "../../../store/AssociationDataSlice";
-import { fetchNewAssociations } from "../../../store/newAssociationsSlice";
-import { fetchPopularAssociations } from "../../../store/popularAssociationsSlice";
-import { fetchOpenAssociations } from "../../../store/openAssociationsSlice";
 import axios from "axios";
 
 const AssociationsGrid = ({ filter }: any) => {
@@ -48,13 +43,13 @@ const AssociationsGrid = ({ filter }: any) => {
   };
   return (
     <div className="associations-grid">
-      {associations && associations.map((item: any) => {
+      {associations && associations.map((item: any, index: any) => {
         if (passFilter(item))
           return (
             <Link
               to={`/associations/${item.name}`}
               className="to-association-btn"
-              key={item._id}
+              key={index}
             >
               <BeigeCard
                 key={item.name}

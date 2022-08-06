@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import BeigeCard from "../../layout/card/BeigeCard";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../store/store";
-import { Fragment, useEffect, useState } from "react";
+import {  useEffect } from "react";
 import { fetchFounders } from "../../../store/founderDataSlice";
 import "./AllFounders.scss";
 

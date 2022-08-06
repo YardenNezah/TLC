@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./AssociationPage.scss";
 import VolunteeringPage from "../volunteeringPage/VolunteeringPage";
 import { useParams } from "react-router-dom";
@@ -36,6 +37,16 @@ const AssociationPage = () => {
   const [openVolunteeringCard, setOpenVolunteeringCard] = useState(false);
   const [selectedVolunteering, setSelectedVolunteering] = useState({});
   
+  
+  function formatDate(Idate: any) {
+    const date = new Date(Idate);
+    const currentMonth = date.getMonth();
+    const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
+    const currentDate = date.getDate();
+    //const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
+    return `${currentDate}/${monthString}/${date.getFullYear()}`;
+  }
+  
   const openVolunteeringCardHandler = (volunteer: object) => {
     setOpenVolunteeringCard(true);
     setSelectedVolunteering(volunteer);
@@ -68,7 +79,6 @@ const AssociationPage = () => {
           >
             X
           </button>
-          <br />
           <VolunteeringPage volunteering={selectedVolunteering}></VolunteeringPage>
         </Fragment>
       )}
@@ -86,17 +96,23 @@ const AssociationPage = () => {
         <h2>{associationDetails[0]?.associationDetails.description}</h2>
 
         <div className="feed">
-          {associationVolunteering.map((volunteering: any) => (
-            <div className="feed-container" key={volunteering.name}>
-              <div>
-                <h1>{volunteering.name}</h1>
-              </div>
-              <div>
-                <h3>{volunteering.date}</h3>
-              </div>
-              <div><h3>{volunteering.address}</h3></div>
-              <SubmitButton value={"Sign up here"} onClick={() => openVolunteeringCardHandler(volunteering)}></SubmitButton>
-            </div>
+          {associationVolunteering.map((volunteering: any, index:any) => (
+           <div className="feed-container" key={index}>
+           <span className="volunteering-name">{volunteering.name}</span>
+           <span className="volunteering-date">
+             {formatDate(volunteering.date) !== "NaN/0NaN/NaN"
+               ? formatDate(volunteering.date)
+               : "Unknown Date"}
+           </span>
+
+           <span className="address">{volunteering.address}</span>
+           <div className="submit-volunteer-button">
+             <SubmitButton
+               value={"Sign up here"}
+               onClick={() => openVolunteeringCardHandler(volunteering.name)}
+             ></SubmitButton>
+           </div>
+         </div>
           ))}
         </div>
       </div>)}       

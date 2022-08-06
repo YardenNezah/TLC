@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./VolunteeringPage.scss";
-import Input from "../../layout/form/Input";
 import line from "../../../assets/line-7-copy-2.png";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../store/store";
@@ -67,39 +68,37 @@ const VolunteeringPage = (props: { volunteering: object }) => {
     const currentMonth = date.getMonth();
     const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
     const currentDate = date.getDate();
-    const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
-    return `${date.getFullYear()}-${monthString}-${currentDate}`;
+    //const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
+    return `${currentDate}/${monthString}/${date.getFullYear()}`;
   }
 
   return (
     <div className="volunteering">
-      <div className="volunteering-details">
         <div className="data-content">
           <h3 className="volunteering-title">{props.volunteering}</h3>
           <br></br>
           <p>
-            <span>Association:</span>{" "}
+            <strong>Association:</strong>{" "}
             {selectedAssociation?.name || "Deleted Association"}
           </p>
           <p>
-            <span>Date:</span>{" "}
+            <strong>Date:</strong>{" "}
             {formatDate(volunteeringDetails.date) !== "NaN-0NaN-NaN"
               ? formatDate(volunteeringDetails.date)
               : "Unknown Date"}
           </p>
           <p>
-            <span>Address:</span> {volunteeringDetails.address}{" "}
+            <strong>Address:</strong> {volunteeringDetails?.address}{" "}
           </p>
           <p>
-            <span>Keywords:</span> {volunteeringDetails.keywords}{" "}
+            <strong>Keywords:</strong> {volunteeringDetails?.keywords}{" "}
           </p>
-          <span>{volunteeringDetails.description}</span>{" "}
-          <p>Sounds Good? Sign up here</p>
+          <span>{volunteeringDetails.description}</span>{" "} <br /><br />
+          <span><strong>Sounds Good? Sign up here</strong></span><br /><br />
           <SubmitButton onClick={() => handleSignUp()} value={"Sign up"} />
           <b>{feedback}</b>
         </div>
       </div>
-    </div>
   );
 };
 

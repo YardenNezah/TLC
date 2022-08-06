@@ -55,11 +55,13 @@ const SignUp = () => {
       <form>
         <h2>Sign Up</h2>
         <p>Please fill in this form to create an account.</p>
-        <label>Account type:</label>
+       <div className="account-type">
+         <label>Account type:</label>
         <select onChange={(e) => handleChange(e)} name="role">
           <option value="user">user</option>
           <option value="association">association</option>
         </select>
+         </div> 
         <br/>
         <label>Name: </label>
         <input type="text" name="name" onChange={(e) => handleChange(e)} value={formInputs?.name}/>
@@ -77,8 +79,8 @@ const SignUp = () => {
         <input type="text" name="phone" onChange={(e) => handleChange(e)} value={formInputs?.phone}/>
         <br/>
         {formInputs.role === "user" && <>
-        <label>Which field interests you?</label> <br />
-        <span> (For example: soldiers, holocaust survivors, etc.) </span>
+        <label>Which field interests you?</label> <br /><br />
+        <span className="examples"> (For example: soldiers, holocaust survivors, etc.) </span><br />
         <input type="text" name="keywords" onChange={(e) => handleChange(e)}/>
         <br/>
         </>}
@@ -90,26 +92,28 @@ const SignUp = () => {
         <label>Image url: </label>
         <input type="text" name="image" onChange={(e) => handleAssociationChange(e)} value={formInputs?.image}/>
         <br/>
-        <label>description: </label>
+        <label>Description: </label>
         <input type="text" name="description" onChange={(e) => handleAssociationChange(e)} value={formInputs?.description}/>
         <br/>
-        <label>city: </label>
+        <label>City: </label>
         <input type="text" name="city" onChange={(e) => handleAssociationChange(e)} value={formInputs?.city}/>
         <br/>
-        <label>street: </label>
+        <label>Street: </label>
         <input type="text" name="street" onChange={(e) => handleAssociationChange(e)} value={formInputs?.street}/>
         <br/>
-        <label>openingHour: </label>
+        <label>Opening Hour: </label>
         <input type="text" name="openingHour" onChange={(e) => handleAssociationChange(e)} value={formInputs?.openingHour}/>
         <br/>
-        <label>closing Hour: </label>
+        <label>Closing Hour: </label>
         <input type="text" name="closingHour" onChange={(e) => handleAssociationChange(e)} value={formInputs?.closingHour}/>
         <br/>
-        <label>site link: </label>
+        <label>Site Link: </label>
         <input type="text" name="siteLink" onChange={(e) => handleAssociationChange(e)} value={formInputs?.siteLink}/>
         <br/>
         </>}
-        <SubmitButton onClick={(e: any) => handleSubmit(e)} value={"Submit"} />
+        <div className="submit-form-btn">
+                  <SubmitButton onClick={(e: any) => handleSubmit(e)} value={"Submit"} />
+        </div>
         <p>
           Already have an account? <Link to="/signin">Sign In</Link>
         </p>

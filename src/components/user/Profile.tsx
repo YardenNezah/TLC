@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../store/store";
-import { fetchUsers } from "../../store/usersSlice";
 import { authMiddleware } from "../../utils";
 import Header from "../header/Header";
+
 
 const Profile = () => {
   
@@ -34,14 +32,14 @@ const Profile = () => {
     document.location.href = "http://localhost:3000/"
   }
   return (
-    <div className="page-container">
+    <div className="page-container all-volunteeering-container">
       <Header />
       <form>
         <h2>User Profile</h2>
-        <h3>username: {userDetails.username}</h3>
-        <h3>name: {userDetails.name}</h3>
-        <h3>phone: {userDetails.phone}</h3>
-        <button onClick={() => {logout()}}>Logout</button>
+        <p><strong>Username:  </strong> {userDetails.username}</p>
+        <p><strong>Name:  </strong> {userDetails.name}</p>
+        <p><strong>Phone:  </strong> {userDetails.phone}</p>
+        <button onClick={() => {logout()}} className="logout-btn">Logout</button>
       </form>
     </div>
   );

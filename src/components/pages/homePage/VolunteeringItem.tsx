@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Fragment } from "react";
 import VolunteeringCard from "../../layout/card/VolunteeringCard";
 
@@ -8,7 +9,7 @@ const SignatureItem =({volunteering}:any) => {
     const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
     const currentDate = date.getDate();
     const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
-    return `${date.getFullYear()}-${monthString}-${currentDate}`;
+    return `${currentDate}/${monthString}/${date.getFullYear()}`;
 }
 
     return (

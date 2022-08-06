@@ -10,9 +10,9 @@ const VolunteeringCard: React.FC<{
   return (
         <div className="data-item">
         <div className="data-content">
-          <h4 className="volunteering-title">{props.title}</h4>
-          <p>{props.address}</p>
-          <p>{props.date}</p>
+          <span className="volunteering-card-title">{props.title}</span><br/>
+          <span className="volunteer-card-address">{props.address}</span> <br/>
+          <span className="volunteer-card-date">{props.date}</span>
         </div>
       </div>
   );
