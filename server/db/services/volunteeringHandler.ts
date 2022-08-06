@@ -69,7 +69,7 @@ class volunteeringHandler {
 
   static async getRegisteredVolunteeringsHandler(user: any) {
     try {
-      const res = volunteering.find({ favouriteFoods: { "$in" : [user._id]} })
+      const res = volunteering.find({ volunteers: user._id })
       if(res) return res
       else return false
       }

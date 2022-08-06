@@ -8,10 +8,12 @@ import { useAppDispatch } from "../../../store/store";
 import "./AllVolunteeringPage.scss";
 import SubmitButton from "../../layout/button/SubmitButton";
 import VolunteeringPage from "../volunteeringPage/VolunteeringPage";
+import { Link } from "react-router-dom";
 
 const VolunteeringGrid = ({ filter }: any) => {
   const dispatch = useAppDispatch();
   const { volunteering } = useSelector((state: any) => state.volunteering);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
     dispatch(fetchVolunteering());
@@ -26,42 +28,59 @@ const VolunteeringGrid = ({ filter }: any) => {
     setSelectedVolunteering(volunteer);
   };
 
-  const passFilter:any = (item: any) => {
-    const foryouSuggestions: any = volunteering?.filter((item: any) => {
-      const keywords: any = localStorage.getItem("keywords");
-      const found: any =
-        item?.keywords[0]?.length !== 0 ? item.keywords[0]?.split(",") : "";
-      const foundResult = found?.some(
-        (r: any) => keywords?.split(",").indexOf(r) >= 0
-      );
-      return foundResult;
-    })[0]?.keywords;
-    const volunteeringDay: any = item?.date?.slice(0, 10);
+  // Function definition with passing two arrays
+  function findCommonElement(array1: any, array2: any) {
+    // Loop for array1
+    for (let i = 0; i < array1.length; i++) {
+      // Loop for array2
+      for (let j = 0; j < array2.length; j++) {
+        // Compare the element of each and
+        // every element from both of the
+        // arrays
+        if (array1[i] === array2[j]) {
+          // Return if common element found
+          return true;
+        }
+      }
+    }
+
+    // Return if no common element exist
+    return false;
+  }
+
+  const passFilter: any = (item: any) => {
+    const splitedKeywords: any = localStorage.getItem("keywords")?.split(",");
+    let foryouSuggestions:any = [];
+
+    volunteering?.map((item: any) => {
+      if (item?.keywords[0]?.length !== 0) {
+        item.keywords[0]?.split(",").map((vol: any) => {
+          if(splitedKeywords.includes(vol)) foryouSuggestions.push(item);
+        });
+      }
+    });
+
+    console.log(foryouSuggestions);
+
+    const volunteeringFormated: any = formatDate(item?.date);
+
     const date = new Date();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const nextDay = date.getDate() + 1;
-    const today = date.getFullYear() + "/" + month + "/" + date.getDate();
-    const tommorrow = date.getFullYear() + "/" + month + "/" + nextDay;
-    let keywordIsEqual: boolean;
-    const isForYou:any = foryouSuggestions?.map((suggestion: any) => {
-      item?.keywords?.map((keyword: any) => {
-        if (suggestion === keyword) keywordIsEqual = true;
-        else keywordIsEqual = false;
-      });
-      return keywordIsEqual;
-    });
+    const today = date.getDate() + "/" + month + "/" + date.getFullYear();
+    const tommorrow = nextDay + "/" + month + "/" + date.getFullYear();
 
     switch (filter) {
       case "all":
         return true;
       case "today":
-        if (today === volunteeringDay) return true;
+        if (today === volunteeringFormated) return true;
         else return false;
       case "tommorrow":
-        if (tommorrow === volunteeringDay) return true;
+        if (tommorrow === volunteeringFormated) return true;
         else return false;
       case "foryou":
-        if (isForYou) return true;
+        if (foryouSuggestions.includes(item)) return true;
         return false;
       default:
         return true;
@@ -70,11 +89,26 @@ const VolunteeringGrid = ({ filter }: any) => {
 
   function formatDate(Idate: any) {
     const date = new Date(Idate);
-    const currentMonth = date.getMonth();
+    const currentMonth = date.getMonth() + 1;
     const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
     const currentDate = date.getDate();
     //const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;
     return `${currentDate}/${monthString}/${date.getFullYear()}`;
+  }
+  const filteredArr = volunteering.filter((item: any) => passFilter(item));
+
+  const numberOfPages = Math.ceil(filteredArr.length / 8);
+  let pages = [];
+  for (let page = 1; page <= numberOfPages; page++) {
+    pages.push(
+      <Link
+        key={page}
+        className="page"
+        to={`/volunteering/${page}`}
+        onClick={() => setPageNumber(page)}>
+        {page}
+      </Link>
+    );
   }
 
   return (
@@ -97,10 +131,10 @@ const VolunteeringGrid = ({ filter }: any) => {
           ></VolunteeringPage>
         </Fragment>
       )}
+      {filteredArr.length > 8 ? (
       <div className="feed">
         {!openVolunteeringCard &&
-          volunteering.map((item: any, index: any) => {
-            if (passFilter(item))
+            filteredArr.slice(pageNumber * 8 - 8, pageNumber * 8).map((item: any, index: any) => {
               return (
                 <div className="feed-container" key={index}>
                   <span className="volunteering-name">{item.name}</span>
@@ -119,8 +153,35 @@ const VolunteeringGrid = ({ filter }: any) => {
                   </div>
                 </div>
               );
-          })}
+          })}     
+           <div className="pagination">{pages}</div>
       </div>
+      ): (
+        <div className="feed">
+        {!openVolunteeringCard &&
+            filteredArr.map((item: any, index: any) => {
+              return (
+                <div className="feed-container" key={index}>
+                  <span className="volunteering-name">{item.name}</span>
+                  <span className="volunteering-date">
+                    {formatDate(item.date) !== "NaN/0NaN/NaN"
+                      ? formatDate(item.date)
+                      : "Unknown Date"}
+                  </span>
+
+                  <span className="address">{item.address}</span>
+                  <div className="submit-volunteer-button">
+                    <SubmitButton
+                      value={"Sign up here"}
+                      onClick={() => openVolunteeringCardHandler(item.name)}
+                    ></SubmitButton>
+                  </div>
+                </div>
+              );
+          })}     
+      </div>
+      )}
+
     </Fragment>
   );
 };

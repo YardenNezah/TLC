@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from "react";
-import Input from "../layout/form/Input";
 import "./User.scss";
 import { Link } from "react-router-dom";
 import Header from "../header/Header";
@@ -31,7 +30,6 @@ const SignUp = () => {
   }
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(formInputs)
     try {
       const result = await axios.post("http://localhost:8080/auth/signup", formInputs);
       console.log(result);

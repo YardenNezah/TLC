@@ -48,7 +48,6 @@ class volunteeringController {
 
   async getRegisteredVolunteerings (req: Request, res: Response) {
     const result = await volunteeringHandler.getRegisteredVolunteeringsHandler(req.body.user);
-    console.log(result)
     if (result) return res.status(200).json({result});
     return res.status(500).send("Internal error.");
   }

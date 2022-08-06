@@ -1,7 +1,5 @@
 import React from "react";
-import logo from "../../assets/logo.jpeg";
 import hamburger from "../../assets/group-13.png";
-import search from "../../assets/search-icon.png";
 import user from "../../assets/user-icon-copy.png";
 import "./Header.scss";
 import { Fragment, useState } from "react";
@@ -28,7 +26,6 @@ const MobileHeader = () => {
               className="hamburger"
               onClick={openNavBarHandler}
             ></img>
-            <img src={search} alt="search" className="search-icon"></img>
             <NavLinkTemplate content={"My Profile"} to={"/profile"} />
             <Link to="/signin">
               <img src={user} alt="user"></img>
@@ -48,7 +45,7 @@ const MobileHeader = () => {
             <Link to="/associations" className="hamburger-nav-top-links">
               Associations
             </Link>
-            <Link to="/volunteering" className="hamburger-nav-top-links">
+            <Link to="/volunteering/1" className="hamburger-nav-top-links">
               Volunteer now
             </Link>
             <Link to="/About" className="hamburger-nav-top-links">

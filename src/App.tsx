@@ -34,7 +34,7 @@ function App() {
       <Route path="/associations" exact>
         <AllAssociations />
       </Route>
-      <Route path="/volunteering" exact>
+      <Route path="/volunteering/:page" exact>
         <AllVolunteeringPage />
       </Route>
       <Route path="/About" exact>

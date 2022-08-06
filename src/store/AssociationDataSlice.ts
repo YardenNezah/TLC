@@ -27,7 +27,6 @@ const associationsSlice = createSlice({
       })
       .addCase(fetchAssociations.rejected, (state, action) => {
         state.isLoading = false;
-       // console.log(action.error.message);
       });
   },
 });

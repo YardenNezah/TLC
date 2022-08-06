@@ -5,7 +5,7 @@ import VolunteeringCard from "../../layout/card/VolunteeringCard";
 const SignatureItem =({volunteering}:any) => {
   function formatDate(Idate: any) {
     const date = new Date(Idate)
-    const currentMonth = date.getMonth();
+    const currentMonth = date.getMonth()+1;
     const monthString = currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
     const currentDate = date.getDate();
     const dateString = currentDate >= 10 ? currentDate : `0${currentDate}`;

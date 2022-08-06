@@ -16,7 +16,6 @@ class authController {
     const _id = req.params.id
     if (!_id) return res.status(400).send("no id.");
     const result = await usersHandler.getUserByIdHandler(_id);
-    console.log(result)
     if (result) return res.status(200).json({ result });
     return res.status(500).send("Internal error.");
   }

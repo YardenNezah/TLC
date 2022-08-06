@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { authMiddleware } from '../../../utils';
 import Footer from '../../footer/Footer';
 import Header from '../../header/Header'
 import SubmitButton from '../../layout/button/SubmitButton';
+import '../../user/User.scss';
 
 function NewVolunteering() {
     const [feedback, setFeedback] = useState("");
@@ -36,33 +38,34 @@ function NewVolunteering() {
     useEffect(() => {
       authMiddleware(false, true, true)
     }, []);
-  
+  let datePickerId = new Date().toISOString().split("T")[0];
     return (
       <>
         <Header />
-        <form>
+        <form className='new-volunteering-form'>
           <h2>New Volunteering</h2>
           <p>Please fill in this form to create a volunteering.</p>
-          <label>Account type:</label>
-          <br/>
           <label>Name: </label>
           <input type="text" name="name" onChange={(e) => handleChange(e)} value={formInputs?.name}/>
           <br/>
-          <label>date: </label>
-          <input type="date" name="date" onChange={(e) => handleChange(e)} value={formInputs?.date}/>
+          <label>Date: </label>
+          <input type="date" name="date" onChange={(e) => handleChange(e)} value={formInputs?.date} min={datePickerId}/>
           <br/>
-          <label>description: </label>
+          <label>Description: </label>
           <input type="text" name="description" onChange={(e) => handleChange(e)} value={formInputs?.description}/>
           <br/>
-          <label>address: </label>
+          <label>Address: </label>
           <input type="text" name="address" onChange={(e) => handleChange(e)} value={formInputs?.address}/>
           <br/>
-          <label>keywords: (seperate by comma)</label>
+          <label>Keywords:<br /> (seperate by comma)</label>
           <input type="text" name="keywords" onChange={(e) => handleChange(e)} value={formInputs?.keywords}/>
           <br/>
+          <div className="submit-form-btn">
+
           <SubmitButton onClick={(e: any) => handleSubmit(e)} value={"Submit"} />
-          <b>{feedback}</b>
-        </form>
+          </div>
+        </form>          <b>{feedback}</b>
+
         <Footer />
       </>
     );

@@ -62,7 +62,7 @@ const HomePage = () => {
         </Link>
         <p className="sub-title">LAST MINUTE VOLUNTEERING:</p>
         <Volunteering volunteering={volunteering} key={0}/>
-        <Link to={"/volunteering"} className="all-associations-desktop-btn">
+        <Link to={"/volunteering/1"} className="all-associations-desktop-btn">
           All Volunteering {">>"}
         </Link>
       </div>

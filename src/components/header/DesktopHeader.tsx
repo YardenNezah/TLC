@@ -16,7 +16,7 @@ const DesktopHeader = () => {
           TLC
         </Link>
         <NavLinkTemplate content={"Associations"} to={"/associations"} />
-        <NavLinkTemplate content={"Volunteer now"} to={"/volunteering"} />
+        <NavLinkTemplate content={"Volunteer now"} to={"/volunteering/1"} />
         {localStorage.getItem("role") === "association" && <NavLinkTemplate content={"New Volunteering"} to={"/newVolunteering"} />}
         <NavLinkTemplate content={"About us"} to={"/About"} />
       </div>

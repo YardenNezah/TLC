@@ -7,7 +7,6 @@ import React from "react";
 
 const AllAssociations: React.FC = () => {
   const [filter, setFilter] = useState("all");
-  console.log(filter)
   return (
     <div className="page-container all-volunteeering-container">
       <Header />
